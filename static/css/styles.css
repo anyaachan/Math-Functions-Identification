@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+
+html {
+    scroll-behavior: smooth;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+body {
+    font-family: 'Rubik Mono One', sans-serif;
+
+}
+
+header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    color: #FFFFFF;
+    width: 100vw;
+}
+
+#roottext {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;   
+}
+
+#roottext > * {
+    padding: 0.3rem;
+}
+
+#roottext {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;   
+    font-style: normal;
+    text-align: center;
+}
+
+#titlemath {
+    font-size: 8rem; 
+    display: grid;
+
+}
+
+#titlemath p {
+    text-align: center; 
+    font-family: "Rubik Mono One"; 
+    font-weight: 400; 
+    letter-spacing: 11.20px; 
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#SketchMath {
+    background: linear-gradient(90deg, #FF4319 3%, #FF7A00 36%, #FFBE00 68%, #9CB700 93%); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    word-wrap: break-word;
+}
