@@ -9,42 +9,37 @@ html {
 
 body {
     font-family: 'Rubik Mono One', sans-serif;
+    background-size: cover;
+    background-position: center;
+    color: #333;
 
 }
 
 header {
-    height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between; 
-    color: #FFFFFF;
-    width: 100vw;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
 }
 
-#roottext {
+header nav a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    margin-right: 2rem;
+}
+
+
+main {
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;   
-}
-
-#roottext > * {
-    padding: 0.3rem;
-}
-
-#roottext {
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;   
-    font-style: normal;
+    justify-content: center;
     text-align: center;
 }
 
 #titlemath {
-    font-size: 8rem; 
+    font-size: 6rem; 
     display: grid;
 
 }
@@ -64,4 +59,21 @@ header {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     word-wrap: break-word;
+    z-index: 1;
+}
+
+#titleshadow {
+    position: relative;
+    left: -0.3rem;
+    top: 0.3rem;
+    z-index: 0;
+
+}
+
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
 }

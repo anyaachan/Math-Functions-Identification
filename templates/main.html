@@ -5,18 +5,27 @@
     <title>SketchMath</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-<body>
-    <div id = "rootmain">
-        <div id = "bloboverlay">
-            <div id = "roottext">
-                <div id="titlemath">
-                    <p id="SketchMath">SketchMath</p>
-                    <p id="titleshadow">SketchMath</p>
-                </div>
-                <p id="playbutton">PLAY</p>
-            </div>
 
+<body>
+    <header>
+        <nav>
+            <a href="#" id="how-to-play">HOW TO PLAY?</a>
+        </nav>
+        <div id="language-selection">EN</div>
+    </header>
+    <main>
+        <div id = "bloboverlay"></div>
+        <div id="titlemath">
+            <p id="SketchMath">SketchMath</p>
+            <p id="titleshadow">SketchMath</p>
         </div>
-    </div>
+        <button id="play-button">PLAY!</button>
+    </main>
+    <footer>
+        <div id="by">BY ANNA DANCHENKO</div>
+        <nav>
+            <a href="#" id="contact-me">CONTACT ME</a>
+        </nav>
+    </footer>
 </body>
 </html>
