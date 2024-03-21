@@ -15,32 +15,52 @@ body {
 
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
 }
 
 header nav a {
-    color: rgb(0, 0, 0);
-    text-decoration: none;
     margin-right: 2rem;
 }
 
 
 main {
-    height: 100%;
-    display: flex;
+    display: grid;
+    height: 100vh;
+    /* display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    text-align: center; */
+}
+
+#footerheader {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#maintitle {
+    margin: auto;
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #titlemath {
     font-size: 6rem; 
     display: grid;
+
 
 }
 
@@ -62,18 +82,18 @@ main {
     z-index: 1;
 }
 
+#play-button {
+    text-decoration: none;
+    border: none;
+    background-color: inherit;
+    font-size: 2rem; 
+    font-family: 'Rubik Mono One';
+}
+
 #titleshadow {
     position: relative;
     left: -0.3rem;
     top: 0.3rem;
     z-index: 0;
 
-}
-
-
-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
 }
