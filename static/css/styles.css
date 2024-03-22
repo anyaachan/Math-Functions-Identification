@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 
 html {
     scroll-behavior: smooth;
@@ -19,6 +21,7 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100vh;
+    width: 100vw;
 }
 
 header nav a {
@@ -48,6 +51,13 @@ main {
     grid-row: 1;
 }
 
+#upperpart, #bottompart {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #maintitle {
     margin: auto;
     grid-column: 1;
@@ -58,16 +68,14 @@ main {
 }
 
 #titlemath {
-    font-size: 6rem; 
+    font-size: 8rem; 
     display: grid;
-
-
 }
 
 #titlemath p {
     text-align: center; 
-    font-family: "Rubik Mono One"; 
-    font-weight: 400; 
+    font-family: 'Rubik';
+    font-weight: 1000; 
     letter-spacing: 11.20px; 
     grid-column: 1;
     grid-row: 1;
@@ -80,6 +88,7 @@ main {
     background-clip: text;
     word-wrap: break-word;
     z-index: 1;
+    
 }
 
 #play-button {
@@ -88,6 +97,7 @@ main {
     background-color: inherit;
     font-size: 2rem; 
     font-family: 'Rubik Mono One';
+    line-height: 0.01; /* Add this line to remove the unwanted space */
 }
 
 #titleshadow {
