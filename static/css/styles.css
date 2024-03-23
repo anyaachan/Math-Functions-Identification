@@ -181,14 +181,31 @@ main {
     flex-grow: 1; /* Allows paragraphs to expand and fill the space */
 }
 
-
-#title-howtoplay { 
+#main-howtoplay { 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: stretch; /* Centers the content vertically */
+    align-items: center; /* Centers the content horizontally */
+    width: 100vw;
+    height: 100vh;
+    text-align: center; /* Ensures text is centered within its container */
+}
+
+#title-howtoplay { 
     font-size: 8rem;
     font-family: 'Rubik', sans-serif;
     font-weight: 800;
+    margin-bottom: 1rem; /* Adds space below the title */
+}
 
+#tutorial {
+    position: relative;
+    margin: 3rem;
+    overflow: hidden; /* Ensures nothing spills outside the bounds */
+}
+
+#tutorial-image {
+    max-width: 100%; /* Ensures image is not larger than its container */
+    max-height: 100%; /* Ensures image is not taller than its container */
+    object-fit: contain; /* Ensures the image is fully visible */
 }
