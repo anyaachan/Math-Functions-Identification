@@ -163,10 +163,16 @@ main {
     flex: 1; /* Takes up equal width */
     overflow: hidden; 
     transition: .2s;
-    height: calc(100% - 16rem); 
+    height: auto; 
 }
 
-.card:hover {
+#card-eternal:hover {
+    scale:1.05;
+}
+#card-arcade:hover {
+    scale:1.05;
+}
+#card-mentor:hover {
     scale:1.05;
 }
 
@@ -185,6 +191,33 @@ main {
     margin: 0rem 1rem; /* Provides a consistent margin */
     flex-grow: 1; /* Allows paragraphs to expand and fill the space */
 }
+
+.card h1 {
+    letter-spacing: 0.04em;
+}
+
+#card-arcade h1, #arcade-title{
+    background: linear-gradient(90deg, #FF4319 0%, #FFBE00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+#card-eternal h1{
+background: linear-gradient(90deg, #B60000 0%, #FF7A00 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+#card-mentor h1{
+background: linear-gradient(90deg, #FFB800 0%, #ACCA01 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+
 
 #main-howtoplay { 
     display: flex;
@@ -220,4 +253,69 @@ main {
     max-width: 100%; /* Ensures image is not larger than its container */
     max-height: 100%; /* Ensures image is not taller than its container */
     object-fit: contain; /* Ensures the image is fully visible */
+}
+
+#main-arcade {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#card-space-arcade {
+    width: 100%; /* Adjust based on your design */
+    height:70%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;    
+}
+
+#graph-drawing {
+    margin: 0rem 1rem 0rem 2rem;
+    height: 100%;
+    /* Other styles as needed */
+}
+
+#arcade-elements {
+    margin: 0rem 2rem 0rem 1rem;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 6fr;
+}
+
+#arcade-time-lives{
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    
+}
+
+#arcade-title {
+    font-size: 4rem;
+    margin: 0;
+
+}
+
+#arcade-info {
+    height: 100%;
+    display: grid;
+    gap: 2rem;
+    height:100%;
+    grid-template-rows: 1fr 3fr;
+}
+
+#arcade-equation{
+    height:100%;
+    margin:0rem;
+}
+
+#arcade-time, #arcade-lives{
+    height:100%;
+    margin: 0rem;
+    font-size: 5rem;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
 }
