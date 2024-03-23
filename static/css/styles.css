@@ -112,7 +112,7 @@ main {
     position: fixed;
     width: 100vw;
     height: 100vh;
-    z-index: 0; /* Changed from -1 to 0 to make sure it's above the base layer */
+    z-index: -10; /* Changed from -1 to 0 to make sure it's above the base layer */
     top: 0;
     left: 0;
 }
@@ -135,7 +135,7 @@ main {
 }
 
 
-#main-content {
+#main-gamemode {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -151,13 +151,18 @@ main {
     background: linear-gradient(203deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.20) 100%);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.20);
     border-radius: 3rem;
-    border: 1px solid rgba(255, 255, 255, 0.60);
+    border: 0.15rem solid rgba(255, 255, 255, 0.60);
     backdrop-filter: blur(0.5rem);
     text-align: center;
     justify-content: stretch; /* This spaces out the child elements */
     flex: 1; /* Takes up equal width */
     overflow: hidden; 
+    transition: .2s;
     height: calc(100% - 16rem); 
+}
+
+.card:hover {
+    scale:1.05;
 }
 
 .card h1 {
@@ -174,4 +179,16 @@ main {
     color: #161616;
     margin: 0rem 1rem; /* Provides a consistent margin */
     flex-grow: 1; /* Allows paragraphs to expand and fill the space */
+}
+
+
+#title-howtoplay { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 8rem;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 800;
+
 }

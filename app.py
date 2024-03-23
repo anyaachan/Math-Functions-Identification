@@ -10,5 +10,9 @@ def home():
 def gamemode():
     return render_template('gamemode.html')
 
+@app.route("/howtoplay")
+def howtoplay():
+    return render_template('howtoplay.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
