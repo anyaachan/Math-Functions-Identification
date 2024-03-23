@@ -14,5 +14,9 @@ def gamemode():
 def howtoplay():
     return render_template('howtoplay.html')
 
+@app.route("/arcade")
+def arcade():
+    return render_template('arcade.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

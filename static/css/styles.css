@@ -17,6 +17,11 @@ body {
 
 }
 
+a {
+    text-decoration: none;
+
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -190,9 +195,16 @@ main {
     height: 100vh;
     text-align: center; /* Ensures text is centered within its container */
 }
+/* How To Play? */
+
 
 #title-howtoplay { 
     font-size: 8rem;
+    letter-spacing: 0.08em;
+    background: linear-gradient(90deg, #FFBE00 0%, #FF4319 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-family: 'Rubik', sans-serif;
     font-weight: 800;
     margin-bottom: 1rem; /* Adds space below the title */
