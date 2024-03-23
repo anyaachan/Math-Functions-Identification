@@ -5,42 +5,32 @@
     <title>SketchMath</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-
-<header>
-    <div style="width: 1920px; height: 1080px; position: relative">
-        <div style="width: 1920px; height: 1080px; left: 0px; top: 0px; position: absolute">
-          <div style="width: 1920px; height: 1080px; left: 0px; top: 0px; position: absolute">
-            <div style="width: 1920px; height: 1080px; left: 0px; top: 0px; position: absolute; background: white"></div>
-            <div style="width: 1920px; height: 1080px; left: 0px; top: 0px; position: absolute; background: white"></div>
-            <img style="width: 1920px; height: 1080px; left: 0px; top: 0px; position: absolute; opacity: 0.80" src="https://via.placeholder.com/1920x1080" />
-            <div style="width: 1920px; height: 1080px; left: 0px; top: 0px; position: absolute; mix-blend-mode: multiply; background: #FFF6ED"></div>
-          </div>
-          <div style="width: 531px; height: 764px; left: 115px; top: 158px; position: absolute">
-            <div style="width: 531px; height: 764px; left: 0px; top: 0px; position: absolute; background: linear-gradient(203deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.20) 100%); box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.20); border-radius: 50px; border: 2px rgba(255, 255, 255, 0.60) solid; backdrop-filter: blur(30px)"></div>
-            <div style="left: 33px; top: 45px; position: absolute; text-align: center; color: #B60000; font-size: 80px; font-family: Rubik Mono One; font-weight: 400; word-wrap: break-word">ETERNAL</div>
-          </div>
-          <div style="width: 531px; height: 764px; left: 704px; top: 158px; position: absolute">
-            <div style="width: 531px; height: 764px; left: 0px; top: 0px; position: absolute; background: linear-gradient(203deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.20) 100%); box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.20); border-radius: 50px; border: 2px rgba(255, 255, 255, 0.60) solid; backdrop-filter: blur(60px)"></div>
-            <div style="left: 77px; top: 45px; position: absolute; text-align: center; color: #FF4319; font-size: 80px; font-family: Rubik One; font-weight: 400; letter-spacing: 3.20px; word-wrap: break-word">ARCADE</div>
-          </div>
-          <div style="width: 531px; height: 764px; left: 1294px; top: 158px; position: absolute">
-            <div style="width: 531px; height: 764px; left: 0px; top: 0px; position: absolute; background: linear-gradient(203deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.20) 100%); box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.20); border-radius: 50px; border: 2px rgba(255, 255, 255, 0.60) solid; backdrop-filter: blur(60px)"></div>
-            <div style="left: 62px; top: 45px; position: absolute; text-align: center; color: #FFB800; font-size: 80px; font-family: Rubik Mono One; font-weight: 400; word-wrap: break-word">MENTOR</div>
-          </div>
-          <div style="width: 129.95px; height: 68.06px; left: 53.40px; top: 34px; position: absolute; transform: rotate(17.44deg); transform-origin: 0 0; border: 8px black solid"></div>
-        </div>
-        <div style="width: 1673px; height: 555px; left: 139px; top: 319px; position: absolute">
-          <div style="width: 484px; left: 0px; top: 431px; position: absolute; text-align: center; color: #161616; font-size: 50px; font-family: Rubik One; font-weight: 400; letter-spacing: 2px; word-wrap: break-word">Train and Perfect!</div>
-          <div style="width: 484px; left: 594px; top: 369px; position: absolute; text-align: center; color: #161616; font-size: 50px; font-family: Rubik One; font-weight: 400; letter-spacing: 2px; word-wrap: break-word">Test Your Knowledge Under Stress!</div>
-          <div style="width: 484px; left: 594px; top: 0px; position: absolute; text-align: center; color: #161616; font-size: 50px; font-family: Rubik One; font-weight: 400; letter-spacing: 2px; word-wrap: break-word">Limited Time<br/>and Lives</div>
-          <div style="width: 484px; left: 1178px; top: 431px; position: absolute; text-align: center; color: #161616; font-size: 50px; font-family: Rubik One; font-weight: 400; letter-spacing: 2px; word-wrap: break-word">Read, Remember and Improve!</div>
-          <div style="width: 484px; left: 1189px; top: 0px; position: absolute; text-align: center; color: #161616; font-size: 50px; font-family: Rubik One; font-weight: 400; letter-spacing: 2px; word-wrap: break-word">Useful Resources and Feedback</div>
-          <div style="width: 442px; left: 21px; top: 0px; position: absolute; text-align: center; color: #161616; font-size: 50px; font-family: Rubik One; font-weight: 400; letter-spacing: 2px; word-wrap: break-word">Infinite Game with feedback,<br/>No Hints or Links</div>
-        </div>
-      </div>
-</header>
-
 <body>
+    <div class="background">
+        <img class="papertexture"  src="static/media/paper-texture.jpeg" alt="Background Placeholder"/>
+        <div id="overlay"></div>
+    </div>
+    
+    <header id="header"></header>
 
+    <main id="main-content">
+        <div id="card-eternal" class="card">
+            <h1>ETERNAL</h1>
+            <p>Infinite Game with feedback, No Hints or Links</p>
+            <p>Train and Perfect!</p>
+        </div>
+
+        <div id="card-arcade" class="card">
+            <h1>ARCADE</h1>
+            <p>Limited Time and Lives</p>
+            <p>Test Your Knowledge Under Stress!</p>
+        </div>
+
+        <div id="card-mentor" class="card">
+            <h1>MENTOR</h1>
+            <p>Useful Resources and Feedback</p>
+            <p>Read, Remember and Improve!</p>
+        </div>
+    </main>
 </body>
 </html>
