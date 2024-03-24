@@ -282,6 +282,7 @@ background-clip: text;
 .y-axis, .x-axis {
     position: absolute;
     background-color: black;
+    border-radius: 1rem;
 }
 
 .y-axis {
@@ -296,6 +297,29 @@ background-clip: text;
     left: 1rem; /* Margin from the left */
     height:  0.4rem; /* Thickness of the line */
     width: calc(100% - 2rem); /* Adjust width for margins */
+}
+.y-axis::before {
+    /* Arrow for the Y-axis */
+    content: '';
+    position: absolute;
+    left: calc(50% - 0.8rem); /* Adjust to center the arrow horizontally */
+    top: 1rem; /* Position the arrow at the top */
+    transform: translateY(-100%); /* Move the arrow up by its own height */
+    border-left: 0.8rem solid transparent;
+    border-right: 0.8rem solid transparent;
+    border-bottom: 1.6rem solid black;
+}
+
+.x-axis::before {
+    /* Arrow for the X-axis */
+    content: '';
+    position: absolute;
+    right: 1rem; /* Position the arrow at the right */
+    bottom: calc(50% - 0.8rem); /* Adjust to center the arrow vertically */
+    transform: translateX(100%); /* Move the arrow right by its own width */
+    border-top: 0.8rem solid transparent;
+    border-bottom: 0.8rem solid transparent;
+    border-left: 1.6rem solid black; /* Change border-right to border-left */
 }
 
 #arcade-elements {
