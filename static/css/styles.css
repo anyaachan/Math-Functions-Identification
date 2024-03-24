@@ -273,8 +273,29 @@ background-clip: text;
 
 #graph-drawing {
     margin: 0rem 1rem 0rem 2rem;
-    height: 100%;
+    padding-bottom: 100%; /* new */
+    position: relative;
+    display: flex;
     /* Other styles as needed */
+}
+
+.y-axis, .x-axis {
+    position: absolute;
+    background-color: black;
+}
+
+.y-axis {
+    left: 50%;
+    bottom: 1rem; /* Margin from the bottom */
+    width: 0.4rem; /* Thickness of the line */
+    height: calc(100% - 2rem); /* Adjust height for margins */
+}
+
+.x-axis {
+    bottom: 50%;
+    left: 1rem; /* Margin from the left */
+    height:  0.4rem; /* Thickness of the line */
+    width: calc(100% - 2rem); /* Adjust width for margins */
 }
 
 #arcade-elements {
@@ -295,7 +316,6 @@ background-clip: text;
 #arcade-title {
     font-size: 4rem;
     margin: 0;
-
 }
 
 #arcade-info {
@@ -303,19 +323,47 @@ background-clip: text;
     display: grid;
     gap: 2rem;
     height:100%;
-    grid-template-rows: 1fr 3fr;
+    grid-template-rows: 1fr 2fr;
 }
 
 #arcade-equation{
     height:100%;
     margin:0rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8rem;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
 }
 
 #arcade-time, #arcade-lives{
     height:100%;
     margin: 0rem;
     font-size: 5rem;
+    display: flex;
+    flex-direction: column;
     text-align: center;
     justify-content: center;
     align-content: center;
+}
+
+#arcade-lives{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
+    padding: 0rem 1.5rem;
+}
+
+#arcade-lives img {
+    margin: auto;
+    display: flex;
+}
+
+.line-vertical {
+    position: relative; /* new */
+    width: 2rem; /* line-width */
+    height: 10rem; /* line length */
+    z-index: 10;
+    background: #000000;
 }
