@@ -13,14 +13,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Variable to define whether the user is drawing
     let drawing = false;
 
+    // Function to calculate the accurate position of touch events relative to canvas and css styling
     function getEventCanvasPosition(e) {
+        // Get dimensions of the canvas and position relative to the viewport
         const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width; // Relationship bitmap vs. element for X
-        const scaleY = canvas.height / rect.height; // Relationship bitmap vs. element for Y
 
+        // Get ratio of the canvas buffer size to the element size. 
+        // Buffer Size - actual drawing area in pixels
+        // Element size - physical size of the element as specified in the css -> displayed on the screem
+        const scaleX = canvas.width / rect.width; 
+        const scaleY = canvas.height / rect.height; 
+
+        // Return accurate mouse coordinates even when canvas is resized. 
         return {
-            x: (e.clientX - rect.left) * scaleX, // Scale mouse coordinates after they have
-            y: (e.clientY - rect.top) * scaleY   // been adjusted to be relative to element
+            // Scale coordinates
+            x: (e.clientX - rect.left) * scaleX, 
+            y: (e.clientY - rect.top) * scaleY  
         }
     }
 
