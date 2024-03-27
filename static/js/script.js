@@ -1,59 +1,91 @@
 document.addEventListener('DOMContentLoaded', (event) => {
+    // Reference to the canvas and div element
+    const canvas = document.getElementById('canvas-drawing');
+    const graphDrawingDiv = document.getElementById('graph-drawing');
 
-const canvas = document.getElementById('canvas-drawing');
-// canvas is an object that provides methods and properties to draw on the canvas.
-const ctx = canvas.getContext('2d');
+    // Get the drawing context of the canvas object. 2d as a parameter means 2D drawing
+    const ctx = canvas.getContext('2d');
 
-let drawing = false; // variable to indicate whether the user is drawing
-// storing last known positions of the users touch
-let lastX = 0;
-let lastY = 0;
+    // Adjust canvas size to fill its container
+    canvas.width = graphDrawingDiv.offsetWidth;
+    canvas.height = graphDrawingDiv.offsetHeight;
 
-// Function to start the drawing process.
-function startDrawing(e) {
-    drawing = true; // Indicate drawing has started. 
+    // Variable to define whether the user is drawing
+    let drawing = false;
 
-    // Initialize lastX and lastY with the current mouse or touch position.
-    [lastX, lastY] = [e.offsetX || e.touches[0].clientX - canvas.offsetLeft, e.offsetY || e.touches[0].clientY - canvas.offsetTop];
-}
+    function getEventCanvasPosition(e) {
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width; // Relationship bitmap vs. element for X
+        const scaleY = canvas.height / rect.height; // Relationship bitmap vs. element for Y
 
+        return {
+            x: (e.clientX - rect.left) * scaleX, // Scale mouse coordinates after they have
+            y: (e.clientY - rect.top) * scaleY   // been adjusted to be relative to element
+        }
+    }
 
-// Triggered by mouse movement or touch movement on the canvas. It's responsible for the drawing action.
-function draw(e) {
-    if (!drawing) return; // If the user is not drawing, exit the function and do nothing.
-    e.preventDefault(); // Prevents default touch actions like scrolling or zooming on touch devices, allowing for smoother drawing.
-    // Determine the current position for drawing. It needs to account for touch events similarly to 'startDrawing'.
-    const X = e.offsetX || e.touches[0].clientX - canvas.offsetLeft;
-    const Y = e.offsetY || e.touches[0].clientY - canvas.offsetTop;
+    canvas.onmousedown = (e) => {
+        drawing = true;
+        const {x, y} = getEventCanvasPosition(e);
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+    }
 
-    ctx.beginPath(); // Start a new path in the canvas drawing context. This is necessary to begin drawing.
-    ctx.moveTo(lastX, lastY); // Move the drawing cursor to the last recorded position without drawing a line.
-    ctx.lineTo(X, Y); // Draw a line from the last position to the current position.
-    ctx.stroke(); // Renders the path visible using the current stroke style (color, width, etc.).
+    canvas.onmousemove = (e) => {
+        if (drawing) {
+            const {x, y} = getEventCanvasPosition(e);
+            ctx.lineTo(x, y);
+            ctx.stroke();
+        }
+    }
 
-    // Update 'lastX' and 'lastY' with the current position so that the next 'draw' operation starts from here.
-    [lastX, lastY] = [X, Y];
-}
+    canvas.onmouseup = () => {
+        drawing = false;
+    }
 
-// Called when the user stops drawing, either by releasing the mouse button or lifting the finger off the screen.
-function stopDrawing() {
-    drawing = false; // Reset the drawing flag since the drawing action has ended.
-}
+    canvas.onmouseleave = () => {
+        drawing = false;
+    }
 
-// Attach event listeners to the canvas for mouse actions. These listen for the start, continue, and end of a drawing action.
-canvas.addEventListener('mousedown', startDrawing); // Begin drawing when the mouse button is pressed down.
-canvas.addEventListener('mousemove', draw); // Continue drawing as the mouse moves.
-canvas.addEventListener('mouseup', stopDrawing); // End drawing when the mouse button is released.
-canvas.addEventListener('mouseout', stopDrawing); // Also end drawing if the cursor leaves the canvas area.
+    // Support for touch devices
+    canvas.addEventListener('touchstart', (e) => {
+        const touch = e.touches[0];
+        const mouseEvent = new MouseEvent("mousedown", {
+            clientX: touch.clientX,
+            clientY: touch.clientY
+        });
+        canvas.dispatchEvent(mouseEvent);
+    }, false);
 
-// Similarly, attach event listeners for touch actions to support drawing on touch devices.
-canvas.addEventListener('touchstart', startDrawing); // Begin drawing on touch start.
-canvas.addEventListener('touchmove', draw); // Continue drawing as the touch moves.
-canvas.addEventListener('touchend', stopDrawing); // End drawing when the touch is lifted.
+    canvas.addEventListener('touchmove', (e) => {
+        const touch = e.touches[0];
+        const mouseEvent = new MouseEvent("mousemove", {
+            clientX: touch.clientX,
+            clientY: touch.clientY
+        });
+        canvas.dispatchEvent(mouseEvent);
+    }, false);
 
+    canvas.addEventListener('touchend', (e) => {
+        const mouseEvent = new MouseEvent("mouseup", {});
+        canvas.dispatchEvent(mouseEvent);
+    }, false);
 
-ctx.strokeStyle = '#000'; // Line color
-ctx.lineWidth = 2;        // Line width
-ctx.lineJoin = 'round';   // Line join style
-ctx.lineCap = 'round';    // Line cap style
+    // Prevent scrolling when touching the canvas
+    document.body.addEventListener("touchstart", (e) => {
+        if (e.target == canvas) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+    document.body.addEventListener("touchend", (e) => {
+        if (e.target == canvas) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+    document.body.addEventListener("touchmove", (e) => {
+        if (e.target == canvas) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+
 });
