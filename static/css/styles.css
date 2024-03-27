@@ -93,6 +93,8 @@ main {
     background-clip: text;
     word-wrap: break-word;
     z-index: 1;
+    filter: drop-shadow(-0rem 0.5rem 0px #B70000);
+
     
 }
 
@@ -100,9 +102,14 @@ main {
     text-decoration: none;
     border: none;
     background-color: inherit;
-    font-size: 2rem; 
+    font-size: 4rem; 
     font-family: 'Rubik Mono One';
-    line-height: 0.01; /* Add this line to remove the unwanted space */
+    background: linear-gradient(90deg, #FF3D00 0%, #FF7A00 22.5%, #F6CE00 50%, #00DB8C 75%, #0038FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(-3px 4px 0px #B70000);
+
 }
 
 #titleshadow {

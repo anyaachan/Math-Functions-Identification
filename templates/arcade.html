@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <div class="background">
         <img class="papertexture"  src="static/media/paper-texture.jpeg" alt="Background Placeholder"/>
         <div id="overlay"></div>
@@ -18,6 +19,7 @@
             <div id="graph-drawing" class="card">
                 <div class="y-axis"></div>
                 <div class="x-axis"></div>
+                <canvas id="canvas-drawing" width="512" height="512"></canvas>
             </div>
             <div id = "arcade-elements">
                 <div id = "arcade-title">ARCADE</div>
