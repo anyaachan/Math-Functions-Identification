@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const graphDrawingDiv = document.getElementById('graph-drawing');
 
     // Get the drawing context of the canvas object. 2d as a parameter means 2D drawing
+    // Canvas API of HTML5
     const ctx = canvas.getContext('2d');
 
     // Adjust canvas size to fill its container
@@ -32,21 +33,33 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     }
 
+    // Initiate drawing when mouse is pressed
     canvas.onmousedown = (e) => {
         drawing = true;
+
+        // Define coordinates of the start position
         const {x, y} = getEventCanvasPosition(e);
+
+        // Signals to start the new path on <canvas> element
         ctx.beginPath();
+
+        // Set drawing cursor to the start position
         ctx.moveTo(x, y);
     }
 
+    // Draw on canvas as the mouse is moved
     canvas.onmousemove = (e) => {
+        // If the mouse is pressed, draw
         if (drawing) {
             const {x, y} = getEventCanvasPosition(e);
+            // Draw a line by connecting the last point in the current path to the x, y coordinates
             ctx.lineTo(x, y);
+            // Visually render the path on the canvas with the specified stroke style
             ctx.stroke();
         }
     }
 
+    // Stop drawing when mouse is released or cursor leaves canvas area
     canvas.onmouseup = () => {
         drawing = false;
     }
@@ -54,46 +67,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
     canvas.onmouseleave = () => {
         drawing = false;
     }
-
-    // Support for touch devices
-    canvas.addEventListener('touchstart', (e) => {
-        const touch = e.touches[0];
-        const mouseEvent = new MouseEvent("mousedown", {
-            clientX: touch.clientX,
-            clientY: touch.clientY
-        });
-        canvas.dispatchEvent(mouseEvent);
-    }, false);
-
-    canvas.addEventListener('touchmove', (e) => {
-        const touch = e.touches[0];
-        const mouseEvent = new MouseEvent("mousemove", {
-            clientX: touch.clientX,
-            clientY: touch.clientY
-        });
-        canvas.dispatchEvent(mouseEvent);
-    }, false);
-
-    canvas.addEventListener('touchend', (e) => {
-        const mouseEvent = new MouseEvent("mouseup", {});
-        canvas.dispatchEvent(mouseEvent);
-    }, false);
-
-    // Prevent scrolling when touching the canvas
-    document.body.addEventListener("touchstart", (e) => {
-        if (e.target == canvas) {
-            e.preventDefault();
-        }
-    }, { passive: false });
-    document.body.addEventListener("touchend", (e) => {
-        if (e.target == canvas) {
-            e.preventDefault();
-        }
-    }, { passive: false });
-    document.body.addEventListener("touchmove", (e) => {
-        if (e.target == canvas) {
-            e.preventDefault();
-        }
-    }, { passive: false });
-
 });
