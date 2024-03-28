@@ -19,7 +19,10 @@ body {
 
 a {
     text-decoration: none;
+}
 
+button { 
+    all: unset;
 }
 
 body, html {
@@ -266,6 +269,7 @@ background-clip: text;
     width: 100vw;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
@@ -280,23 +284,24 @@ background-clip: text;
 
 #graph-drawing {
     margin: 0rem 1rem 0rem 2rem;
-    padding-bottom: 100%; /* new */
+    padding-bottom: 100%;
     position: relative;
     display: flex;
-    /* Other styles as needed */
 }
 
 .y-axis, .x-axis {
     position: absolute;
     background-color: black;
     border-radius: 1rem;
+    pointer-events: none; /* This ensures the axes don't block mouse events for the canvas */
+
 }
 
 .y-axis {
     left: 50%;
     bottom: 1rem; /* Margin from the bottom */
     width: 0.4rem; /* Thickness of the line */
-    height: calc(100% - 2rem); /* Adjust height for margins */
+    height: calc(100% - 2rem); 
 }
 
 .x-axis {

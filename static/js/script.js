@@ -4,8 +4,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const graphDrawingDiv = document.getElementById('graph-drawing');
 
     // Get the drawing context of the canvas object. 2d as a parameter means 2D drawing
-    // Canvas API of HTML5
+    // Canvas API of HTML5 (a way to inrteract with canvas)
     const ctx = canvas.getContext('2d');
+    const path = new Path2D();
 
     // Adjust canvas size to fill its container
     canvas.width = graphDrawingDiv.offsetWidth;
@@ -39,23 +40,29 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         // Define coordinates of the start position
         const {x, y} = getEventCanvasPosition(e);
-
-        // Signals to start the new path on <canvas> element
-        ctx.beginPath();
-
+        
         // Set drawing cursor to the start position
-        ctx.moveTo(x, y);
+        path.moveTo(x, y);
     }
 
+    const lastX = 0;
+    const lastY = 0;
+    
     // Draw on canvas as the mouse is moved
     canvas.onmousemove = (e) => {
         // If the mouse is pressed, draw
         if (drawing) {
             const {x, y} = getEventCanvasPosition(e);
+
+            // Set the stroke style for the path
+            ctx.lineWidth = 8;
+            ctx.lineJoin = 'round';
+            ctx.lineCap = 'round';
             // Draw a line by connecting the last point in the current path to the x, y coordinates
-            ctx.lineTo(x, y);
+            path.quadraticCurveTo(x, y, x, y);
+
             // Visually render the path on the canvas with the specified stroke style
-            ctx.stroke();
+            ctx.stroke(path);
         }
     }
 
