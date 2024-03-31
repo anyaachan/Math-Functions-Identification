@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // Variable to define whether the user is drawing
     let drawing = false;
+    let drawing_count = 0;
 
     // Function to calculate the accurate position of touch events relative to canvas and css styling
     function getEventCanvasPosition(e) {
@@ -78,17 +79,26 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Stop drawing when mouse is released
     canvas.onmouseup = () => {
         drawing = false;
+
+        let canvasURL = canvas.toDataURL();
+        const downloadElement = document.createElement('a');
+        downloadElement.href = canvasURL;
+        console.log("success")
+    
+        // This is the name of our downloaded file
+        downloadElement.download = "download-this-canvas";
+
+        downloadElement.click();
+        downloadElement.remove();
     }
 
     canvas.onmouseleave = (e) => {
         if(drawing) {
             drawing = false;
-
+            
             const {x, y} = getEventCanvasPosition(e);
             path.lineTo(x, y);
             ctx.stroke(path);
         }
     }
-
-
 });

@@ -403,3 +403,14 @@ background-clip: text;
     z-index: 10;
     background: #000000;
 }
+
+.pause-button {
+    display: flex;
+    width: calc(100% - 6rem);
+    justify-content: flex-end;
+}
+
+.pause-button img {
+    width: 5rem;
+    height: 5rem;
+}
