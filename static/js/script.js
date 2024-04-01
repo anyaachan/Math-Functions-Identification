@@ -73,18 +73,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             lastX = x;
             lastY = y;
+            
         }
     }
 
-    // Stop drawing when mouse is released
-    canvas.onmouseup = () => {
-        drawing = false;
+    function getCanvasContent () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = '#000000';
+        ctx.stroke(path);
 
         let canvasURL = canvas.toDataURL();
         const downloadElement = document.createElement('a');
         downloadElement.href = canvasURL;
-        console.log("success")
-    
+                
         // This is the name of our downloaded file
         downloadElement.download = "download-this-canvas";
 
@@ -92,13 +93,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
         downloadElement.remove();
     }
 
+    // Stop drawing when mouse is released
+    canvas.onmouseup = () => {
+        drawing = false;
+        getCanvasContent();
+    }
+
     canvas.onmouseleave = (e) => {
         if(drawing) {
             drawing = false;
-            
+
             const {x, y} = getEventCanvasPosition(e);
             path.lineTo(x, y);
             ctx.stroke(path);
+
+            getCanvasContent();
         }
     }
 });
