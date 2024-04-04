@@ -93,10 +93,35 @@ document.addEventListener('DOMContentLoaded', (event) => {
         downloadElement.remove();
     }
 
+    function sendCanvasToServer() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = '#000000';
+        ctx.stroke(path);
+
+        const canvasURL = canvas.toDataURL('image/png');
+        
+        // Function to make HTTP request
+        fetch('/upload-image', { // Flask reference, where to send the request
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // Signify that the request is a Json 
+            },
+            body: JSON.stringify({ image: canvasURL }) // The content being send to server. 
+            // Convert image into JSON string
+        })
+        .then(response => response.json()) // Recieve raw responce from the server, also returns a promise
+        .then(data => {  // Process the response data, eg showing the result to the user
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+
     // Stop drawing when mouse is released
     canvas.onmouseup = () => {
         drawing = false;
-        getCanvasContent();
+        sendCanvasToServer();
     }
 
     canvas.onmouseleave = (e) => {
@@ -107,7 +132,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             path.lineTo(x, y);
             ctx.stroke(path);
 
-            getCanvasContent();
+            sendCanvasToServer();
         }
     }
 });
