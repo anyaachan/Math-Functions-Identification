@@ -9,6 +9,7 @@ app = Flask(__name__)
 def home():
     return render_template('main.html')
 
+
 @app.route("/gamemode")
 def gamemode():
     return render_template('gamemode.html')

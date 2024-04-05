@@ -3,6 +3,14 @@ function pauseOn() {
     document.getElementById('pause-screen').style.display = 'block';
 }
 
+function pauseOff() {
+    document.getElementById('pause-screen').style.display = 'none';
+}
+
+function toMenu() {
+    window.location.href="/";
+}
+
 document.addEventListener('DOMContentLoaded', (event) => {
     // Reference to the canvas and div element
     const canvas = document.getElementById('canvas-drawing');
