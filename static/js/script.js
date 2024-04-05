@@ -1,3 +1,8 @@
+
+function pauseOn() {
+    document.getElementById('pause-screen').style.display = 'block';
+}
+
 document.addEventListener('DOMContentLoaded', (event) => {
     // Reference to the canvas and div element
     const canvas = document.getElementById('canvas-drawing');
