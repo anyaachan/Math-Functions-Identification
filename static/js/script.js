@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const nativeRes = 256; // Resolution of training data
     const lineWidth = 3; // Width of the line in the training data
 
+    // Set dynamic line width
     var actualLineWidth = lineWidth * (canvas.width / nativeRes);
 
     // Set the stroke style
