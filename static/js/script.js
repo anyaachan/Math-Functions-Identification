@@ -48,8 +48,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     }
 
+    // Variables to determine the line width
+    const nativeRes = 256; // Resolution of training data
+    const lineWidth = 3; // Width of the line in the training data
+
+    var actualLineWidth = lineWidth * (canvas.width / nativeRes);
+
     // Set the stroke style
-    ctx.lineWidth = 8;
+    ctx.lineWidth = actualLineWidth;
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
     ctx.strokeStyle = '#B70000';
@@ -134,7 +140,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Stop drawing when mouse is released
     canvas.onmouseup = () => {
         drawing = false;
-        sendCanvasToServer();
+        getCanvasContent();
     }
 
     canvas.onmouseleave = (e) => {
@@ -145,7 +151,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             path.lineTo(x, y);
             ctx.stroke(path);
 
-            sendCanvasToServer();
+            getCanvasContent();
         }
     }
 });

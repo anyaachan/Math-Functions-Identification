@@ -276,8 +276,10 @@ background-clip: text;
 
 #card-space-arcade {
     width: 100%; /* Adjust based on your design */
-    display: grid;
-    grid-template-columns: 1fr 1fr;    
+    display: flex;
+    flex: 0 0 0;
+    flex-direction: row;   
+    object-fit: contain;
 }
 
 #graph-drawing {
@@ -285,6 +287,7 @@ background-clip: text;
     position: relative;
     display: flex;
     aspect-ratio: 1/1;
+    flex-basis: 100%;
 }
 
 .y-axis, .x-axis {
@@ -337,6 +340,8 @@ background-clip: text;
     height: 100%;
     display: grid;
     grid-template-rows: 1fr 6fr;
+    flex-basis: 100%;
+
 }
 
 #arcade-time-lives{
@@ -436,3 +441,20 @@ background-clip: text;
     justify-content: center;
 }
 
+
+
+
+@media (max-width: 1200px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 900px) {
+    html {
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 500px) {
+}

@@ -3,12 +3,13 @@ import base64
 from PIL import Image
 import io
 
+SIZE = 256, 256
+
 app = Flask(__name__)
 
 @app.route("/")
 def home():
     return render_template('main.html')
-
 
 @app.route("/gamemode")
 def gamemode():
@@ -35,6 +36,9 @@ def upload_image():
 
     #Convert to an image 
     image = Image.open(io.BytesIO(bytes_data))
+
+    # Resize the image
+    image_resized = image.resize(SIZE)
 
     # Call model evaluation function here
 
