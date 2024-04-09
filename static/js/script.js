@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Stop drawing when mouse is released
     canvas.onmouseup = () => {
         drawing = false;
-        getCanvasContent();
+        sendCanvasToServer();
     }
 
     canvas.onmouseleave = (e) => {
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             path.lineTo(x, y);
             ctx.stroke(path);
 
-            getCanvasContent();
+            sendCanvasToServer();
         }
     }
 });

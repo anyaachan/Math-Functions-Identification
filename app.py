@@ -1,9 +1,17 @@
 from flask import Flask, render_template, request, jsonify
+
+import tensorflow as tf
+from tensorflow import keras
+from keras.models import load_model
+from keras.preprocessing import image
+
+import numpy as np
 import base64
 from PIL import Image
 import io
 
-SIZE = 256, 256
+SIZE = 224, 224
+AUTOTUNE = tf.data.AUTOTUNE
 
 app = Flask(__name__)
 
@@ -37,10 +45,13 @@ def upload_image():
     #Convert to an image 
     image = Image.open(io.BytesIO(bytes_data))
 
-    # Resize the image
-    image_resized = image.resize(SIZE)
+    white_background_image = Image.new("RGBA", image.size, "WHITE") # Create a white rgba background
+    white_background_image.paste(image, (0, 0), image) # Paste original png image on top of the white background
+    final_img = white_background_image.convert("RGB")
 
-    # Call model evaluation function here
+    # model = load_model("model.keras")
+
+    # prediction = model.predict(final_img)
 
     # Return response as a JSON 
     return jsonify(result=data)
