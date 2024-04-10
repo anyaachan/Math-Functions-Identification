@@ -1,19 +1,34 @@
 from flask import Flask, render_template, request, jsonify
 
 import tensorflow as tf
+import os, warnings
+
 from tensorflow import keras
-from keras.models import load_model
-from keras.preprocessing import image
+from tensorflow.keras import layers
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.preprocessing import image_dataset_from_directory
+from tensorflow.keras.preprocessing.image import load_img, img_to_array
+
+
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing import image
+
+import tensorflow_hub as hub
 
 import numpy as np
 import base64
 from PIL import Image
 import io
 
+app = Flask(__name__)
+
 SIZE = 224, 224
 AUTOTUNE = tf.data.AUTOTUNE
 
-app = Flask(__name__)
+class_names = ['linear', 'quadratic']
+
+model_path = 'model/model.keras'
+model = load_model(model_path, custom_objects={'KerasLayer': hub.KerasLayer})
 
 @app.route("/")
 def home():
@@ -35,26 +50,29 @@ def arcade():
 def pause():
     return render_template('pause.html')
 
-@app.route("/upload-image", methods = ['POST'])
+@app.route("/upload-image", methods=['POST'])
 def upload_image():
-    data = request.json["image"] # Convert json to dictionary. This line extracts the Base64-encoded image data from the request payload using the key 'image'.
-    # Decode the data
-    header, encoded = data.split(",", 1)
-    bytes_data = base64.b64decode(encoded)
+    try:
+        data = request.json["image"]
 
-    #Convert to an image 
-    image = Image.open(io.BytesIO(bytes_data))
+        header, encoded = data.split(",", 1)
+        bytes_data = base64.b64decode(encoded)
 
-    white_background_image = Image.new("RGBA", image.size, "WHITE") # Create a white rgba background
-    white_background_image.paste(image, (0, 0), image) # Paste original png image on top of the white background
-    final_img = white_background_image.convert("RGB")
+        image = Image.open(io.BytesIO(bytes_data))
+        white_background_image = Image.new("RGBA", image.size, "WHITE")  # Create a white RGBA background
+        white_background_image.paste(image, (0, 0), image)  # Paste the image on a white background
+        final_img = white_background_image.convert("RGB")
+        final_img = final_img.resize(SIZE)
 
-    # model = load_model("model.keras")
+        final_img = np.array(final_img)
+        prediction = model.predict(final_img[None, :, :])
+        pred_class = class_names[np.argmax(prediction)]
 
-    # prediction = model.predict(final_img)
+        return jsonify(result=pred_class)
 
-    # Return response as a JSON 
-    return jsonify(result=data)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 
 if __name__ == '__main__':
     app.run(debug=True)

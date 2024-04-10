@@ -21,10 +21,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const ctx = canvas.getContext('2d');
     const path = new Path2D();
 
-    // Adjust canvas size to fill its container
-    canvas.width = graphDrawingDiv.offsetWidth;
-    canvas.height = graphDrawingDiv.offsetHeight;
-
     // Variable to define whether the user is drawing
     let drawing = false;
     let drawing_count = 0;
