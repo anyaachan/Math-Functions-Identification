@@ -441,8 +441,39 @@ background-clip: text;
 }
 
 #result-elements { 
+    margin: 0rem 2rem 0rem 1rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 100%;
+}
+
+#result-title {
+    display: grid;
+    text-align: center;
+}
+
+#correct, #incorrect { 
+    grid-row: 1;
+    grid-column: 1;
 
 }
+
+.basic-button {
+    font-size: 5rem;
+}
+
+.result { 
+    display: none;
+    font-size: 5rem;
+}
+
+.resources {
+    display: none;
+}
+
 
 @media (max-width: 1200px) {
     html {

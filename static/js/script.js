@@ -11,6 +11,10 @@ function resultOn() {
     document.getElementById('result-screen').style.display = 'block';
 }
 
+function resultOff() {
+    document.getElementById('result-screen').style.display = 'none';
+}
+
 function toMenu() {
     window.location.href="/";
 }
@@ -23,7 +27,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Get the drawing context of the canvas object. 2d as a parameter means 2D drawing
     // Canvas API of HTML5 (a way to inrteract with canvas)
     const ctx = canvas.getContext('2d');
-    const path = new Path2D();
+    let path = new Path2D();
 
     // Variable to define whether the user is drawing
     let drawing = false;
@@ -59,11 +63,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
     ctx.lineWidth = actualLineWidth;
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
-    ctx.strokeStyle = '#B70000';
 
     // Initiate drawing when mouse is pressed
     canvas.onmousedown = (e) => {
         drawing = true;
+        ctx.strokeStyle = '#B70000';
 
         // Define coordinates of the start position
         const {x, y} = getEventCanvasPosition(e);
@@ -143,6 +147,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         drawing = false;
         sendCanvasToServer();
         resultOn();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        path = new Path2D();
     }
 
     canvas.onmouseleave = (e) => {
