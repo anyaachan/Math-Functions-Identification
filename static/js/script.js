@@ -7,8 +7,13 @@ function pauseOff() {
     document.getElementById('pause-screen').style.display = 'none';
 }
 
-function resultOn() {
+function resultOn(result) {
     document.getElementById('result-screen').style.display = 'block';
+    if (result == true) {
+        document.getElementById('correct').style.display = 'block';}
+    else {
+        document.getElementById('incorrect').style.display = 'block';
+    }
 }
 
 function resultOff() {
@@ -18,26 +23,42 @@ function resultOff() {
 function toMenu() {
     window.location.href="/";
 }
-
-functions = {
+let functions = {
     "linear": "x",
     "negative_linear": "-x",
     "quadratic": "x^2",
     "negative_quadratic": "-x^2",
     "cubic": "x^3",
     "negative_cubic": "-x^3",
-    "square_root": "sqrt(x)"
+    "square_root": "\\sqrt(x)"
 }
 
-function getRandomEquation() {
-    let keys = Object.values(functions);
-    let randomIndex = Math.floor(Math.random() * keys.length);
-    return keys[randomIndex];
+function getKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key] === value);
 }
+
+function checkEquation(userJson, functions) {
+    userAnswer = userJson.result;
+    let equation = document.getElementById("arcade-equation").textContent;
+    let correctAnswer = getKeyByValue(functions, equation);
+    let result = (userAnswer == correctAnswer);
+    console.log("result: " + result);
+    console.log("equation" + equation);
+    console.log("userAnswer: " + userAnswer);
+    console.log("correctAnswer: " + JSON.stringify(functions));
+    resultOn(result);
+}   
 
 document.addEventListener('DOMContentLoaded', (event) => {
 
-    document.getElementById("arcade-equation").innerHTML = getRandomEquation();
+    function getRandomEquation() {
+        const keys = Object.values(functions);
+        let randomIndex = Math.floor(Math.random() * keys.length);
+        document.getElementById("arcade-equation").innerHTML =  "$$" + keys[randomIndex] + "$$";
+        return keys[randomIndex];
+    }
+
+    getRandomEquation();
 
     // Reference to the canvas and div element
     const canvas = document.getElementById('canvas-drawing');
@@ -155,6 +176,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         .then(response => response.json()) // Recieve raw responce from the server, also returns a promise
         .then(data => {  // Process the response data, eg showing the result to the user
             console.log('Success:', data);
+            checkEquation(data, functions);
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -165,7 +187,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     canvas.onmouseup = () => {
         drawing = false;
         sendCanvasToServer();
-        resultOn();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         path = new Path2D();
     }
