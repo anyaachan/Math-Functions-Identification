@@ -46,10 +46,6 @@ def howtoplay():
 def arcade():
     return render_template('arcade.html')
 
-@app.route("/pause")
-def pause():
-    return render_template('pause.html')
-
 @app.route("/upload-image", methods=['POST'])
 def upload_image():
     try:
@@ -71,7 +67,7 @@ def upload_image():
         return jsonify(result=pred_class)
 
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'error': str(e)}), 500 # Return error for debugging purposes
 
 
 if __name__ == '__main__':

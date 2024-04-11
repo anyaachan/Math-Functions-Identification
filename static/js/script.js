@@ -7,6 +7,10 @@ function pauseOff() {
     document.getElementById('pause-screen').style.display = 'none';
 }
 
+function resultOn() {
+    document.getElementById('result-screen').style.display = 'block';
+}
+
 function toMenu() {
     window.location.href="/";
 }
@@ -138,6 +142,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     canvas.onmouseup = () => {
         drawing = false;
         sendCanvasToServer();
+        resultOn();
     }
 
     canvas.onmouseleave = (e) => {

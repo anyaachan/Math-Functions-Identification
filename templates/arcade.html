@@ -47,6 +47,8 @@
                 </div>
             </div>
         </div>
+
+
         <div class="full-overlay" id="pause-screen">
             <div class="background">
                 <img class="papertexture"  src="static/media/paper-texture.jpeg" alt="Background Placeholder"/>
@@ -56,6 +58,32 @@
                 <div id="pause-title">Pause</div>
                 <button onclick="pauseOff()" class = basic-button>RESUME</button>
                 <button onclick="toMenu()" class = basic-button>QUIT GAME</button>
+            </div>
+        </div>
+
+        <div class="full-overlay" id="result-screen">
+            <div class="background">
+                <img class="papertexture"  src="static/media/paper-texture.jpeg" alt="Background Placeholder"/>
+                <div id="overlay"></div>
+            </div>
+            <div id="main-result">
+                <div id = "pause-div">
+                    <button onclick="pauseOn()" class = "pause-button" id="pause-arcade">
+                        <img src="static/media/pause.svg" alt="Pause">
+                    </button>
+                </div>
+                <div id="card-space-result">
+                    <div id="graph-result" class="card">
+                        <div class="y-axis"></div>
+                        <div class="x-axis"></div>
+                        <canvas id="canvas-result" width="512" height="512"></canvas>
+                    </div>
+                    <div id = "result-elements">
+                        <div id="correct">CORRECT</div>
+                        <div id="incorrect">INCORRECT</div>
+                        <button onclick="resultOff()" class = basic-button>RESUME</button>
+                    </div>
+                </div>   
             </div>
         </div>
     </main>

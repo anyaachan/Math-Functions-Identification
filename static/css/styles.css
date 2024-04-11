@@ -274,7 +274,7 @@ background-clip: text;
     justify-content: center;
 }
 
-#card-space-arcade {
+#card-space-arcade, #card-space-result {
     width: 100%; /* Adjust based on your design */
     display: flex;
     flex: 0 0 0;
@@ -282,7 +282,7 @@ background-clip: text;
     object-fit: contain;
 }
 
-#graph-drawing {
+#graph-drawing, #graph-result {
     margin: 0rem 1rem 0rem 2rem;
     position: relative;
     display: flex;
@@ -341,7 +341,6 @@ background-clip: text;
     display: grid;
     grid-template-rows: 1fr 6fr;
     flex-basis: 100%;
-
 }
 
 #arcade-time-lives{
@@ -432,7 +431,7 @@ background-clip: text;
     z-index: 10;
 }
 
-#main-pause {
+#main-pause, #main-result {
     width: 100vw; 
     height: 100vh; 
     display: flex;
@@ -441,8 +440,9 @@ background-clip: text;
     justify-content: center;
 }
 
+#result-elements { 
 
-
+}
 
 @media (max-width: 1200px) {
     html {
@@ -457,4 +457,14 @@ background-clip: text;
 }
 
 @media (max-width: 500px) {
+    html {
+        transform: rotate(90deg);
+        height: 100vh;
+        width: 100vw;
+    }
+    #arcade-elements {
+        height: 100%;
+        width: 100vw;
+    
+    }
 }
