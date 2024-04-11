@@ -19,7 +19,26 @@ function toMenu() {
     window.location.href="/";
 }
 
+functions = {
+    "linear": "x",
+    "negative_linear": "-x",
+    "quadratic": "x^2",
+    "negative_quadratic": "-x^2",
+    "cubic": "x^3",
+    "negative_cubic": "-x^3",
+    "square_root": "sqrt(x)"
+}
+
+function getRandomEquation() {
+    let keys = Object.values(functions);
+    let randomIndex = Math.floor(Math.random() * keys.length);
+    return keys[randomIndex];
+}
+
 document.addEventListener('DOMContentLoaded', (event) => {
+
+    document.getElementById("arcade-equation").innerHTML = getRandomEquation();
+
     // Reference to the canvas and div element
     const canvas = document.getElementById('canvas-drawing');
     const graphDrawingDiv = document.getElementById('graph-drawing');
