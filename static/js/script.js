@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             headers: {
                 'Content-Type': 'application/json' // Signify that the request is a Json 
             },
-            body: JSON.stringify({ image: canvasURL }) // The content being send to server. 
+            body: JSON.stringify({ image: canvasURL, functionName: getKeyByValue(functions, randomEquation)}) // The content being send to server. 
             // Convert image into JSON string
         })
         .then(response => response.json()) // Recieve raw responce from the server, also returns a promise
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             encoded_answer = data.correct_function
             document.getElementById("image-answer").src = encoded_answer;
-            
+
             randomEquation = getRandomEquation();
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, 'arcade-equation']);
         })

@@ -49,9 +49,10 @@ def arcade():
 @app.route("/upload-image", methods=['POST'])
 def upload_image():
     try:
-        data = request.json["image"]
+        image_data = request.json["image"]
+        function_name = request.json["functionName"]
 
-        header, encoded = data.split(",", 1)
+        header, encoded = image_data.split(",", 1)
         bytes_data = base64.b64decode(encoded)
 
         image = Image.open(io.BytesIO(bytes_data))
@@ -66,7 +67,7 @@ def upload_image():
         
         pred_class = class_names[np.argmax(prediction)]
 
-        imagefile = open(ANSWERS_ROUTE + "/" + pred_class + ".png", "rb")
+        imagefile = open(ANSWERS_ROUTE + "/" + function_name + ".png", "rb")
         answer_image_encoded = base64.b64encode(imagefile.read())
         answer_image_encoded = answer_image_encoded.decode("utf-8")
         answer_image_encoded = "data:image/png;base64," + answer_image_encoded

@@ -315,7 +315,7 @@ background-clip: text;
     /* Arrow for the Y-axis */
     content: '';
     position: absolute;
-    left: calc(50% - 0.8rem); /* Adjust to center the arrow horizontally */
+    left: calc(50% - 0.75rem); /* Adjust to center the arrow horizontally */
     top: 1rem; /* Position the arrow at the top */
     transform: translateY(-100%); /* Move the arrow up by its own height */
     border-left: 0.8rem solid transparent;
@@ -477,6 +477,7 @@ background-clip: text;
 #canvas-result {
     width: 100%;
     height: 100%;
+    z-index: 10;
 }
 
 #canvas-result img {
