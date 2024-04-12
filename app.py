@@ -66,12 +66,12 @@ def upload_image():
         
         pred_class = class_names[np.argmax(prediction)]
 
-        imagefile = open(ANSWERS_ROUTE + "/" + "quadratic" + ".png", "rb")
+        imagefile = open(ANSWERS_ROUTE + "/" + pred_class + ".png", "rb")
         answer_image_encoded = base64.b64encode(imagefile.read())
         answer_image_encoded = answer_image_encoded.decode("utf-8")
         answer_image_encoded = "data:image/png;base64," + answer_image_encoded
 
-        return jsonify(result=pred_class, correct_function=answer_image_encoded )
+        return jsonify(result=pred_class, correct_function=answer_image_encoded)
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500 # Return error for debugging purposes

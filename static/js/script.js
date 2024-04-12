@@ -209,6 +209,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
         .then(data => {  // Process the response data, eg showing the result to the user
             console.log('Success:', data);
             checkEquation(data, functions, randomEquation);
+
+            encoded_answer = data.correct_function
+            document.getElementById("image-answer").src = encoded_answer;
+            
             randomEquation = getRandomEquation();
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, 'arcade-equation']);
         })
@@ -216,6 +220,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             console.error('Error:', error);
         });
     }
+
 
     // Stop drawing when mouse is released
     canvas.onmouseup = () => {
