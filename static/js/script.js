@@ -56,9 +56,8 @@ function getRandomEquation() {
 }
 
 function checkEquation(userJson, functions, equation) {
-    let latexEquation = functionsToLatex[equation];
     userAnswer = userJson.result;
-    let correctAnswer = getKeyByValue(functions, latexEquation);
+    let correctAnswer = getKeyByValue(functions, equation);
     let result = (userAnswer == correctAnswer);
     console.log("userAnswer: " + userAnswer);
     console.log("correctAnswer: " + correctAnswer);
@@ -174,7 +173,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     }
 
-    function getCanvasContent () {
+    function getCanvasContent() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.strokeStyle = '#000000';
         ctx.stroke(path);

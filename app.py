@@ -24,7 +24,7 @@ app = Flask(__name__)
 SIZE = 224, 224
 AUTOTUNE = tf.data.AUTOTUNE
 
-class_names = ['linear', 'negative_linear', 'negative_quadratic', 'quadratic']
+class_names = ['linear', 'negative_linear', 'negative_quadratic', 'quadratic', 'square_root']
 
 model_path = 'model/model.keras'
 model = load_model(model_path, custom_objects={'KerasLayer': hub.KerasLayer})
