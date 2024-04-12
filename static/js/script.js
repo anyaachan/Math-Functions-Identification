@@ -66,8 +66,30 @@ function checkEquation(userJson, functions, equation) {
     resultOn(result);
 }   
 
+let duration = 20;
+
+function startTimer(duration) {
+    let timer = duration;
+    var seconds;
+    setInterval(function () {
+        seconds = parseInt(timer, 10)
+        if (seconds < 10) {
+            seconds = "0" + seconds;
+        }
+
+        document.getElementById("arcade-time").textContent = "00:" + seconds;
+
+        timer = timer - 1;
+        if (timer < 0) {
+            timer = duration;
+        }
+
+    }, 1000)
+}
+
 document.addEventListener('DOMContentLoaded', (event) => {
 
+    startTimer(duration);
     let randomEquation = getRandomEquation();
 
     // Reference to the canvas and div element
