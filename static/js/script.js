@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Stop drawing when mouse is released
     canvas.onmouseup = () => {
         drawing = false;
-        getCanvasContent();
+        sendCanvasToServer();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         path = new Path2D();
     }
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             path.lineTo(x, y);
             ctx.stroke(path);
 
-            getCanvasContent();
+            sendCanvasToServer();
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             path = new Path2D();
         }
