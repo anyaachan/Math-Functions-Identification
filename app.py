@@ -24,7 +24,7 @@ app = Flask(__name__)
 SIZE = 224, 224
 AUTOTUNE = tf.data.AUTOTUNE
 
-class_names = ['linear', 'quadratic']
+class_names = ['linear', 'negative_linear', 'negative_quadratic', 'quadratic']
 
 model_path = 'model/model.keras'
 model = load_model(model_path, custom_objects={'KerasLayer': hub.KerasLayer})
@@ -60,7 +60,9 @@ def upload_image():
         final_img = final_img.resize(SIZE)
 
         final_img = np.array(final_img)
-        prediction = model.predict(final_img[None, :, :])
+        final_img = np.expand_dims(final_img, axis=0)
+        prediction = model.predict(final_img)
+        
         pred_class = class_names[np.argmax(prediction)]
 
         return jsonify(result=pred_class)
