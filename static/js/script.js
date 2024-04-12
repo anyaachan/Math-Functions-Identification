@@ -18,6 +18,8 @@ function resultOn(result) {
 
 function resultOff() {
     document.getElementById('result-screen').style.display = 'none';
+    document.getElementById('correct').style.display = 'none';
+    document.getElementById('incorrect').style.display = 'none';
 }
 
 function toMenu() {
@@ -30,35 +32,43 @@ let functions = {
     "negative_quadratic": "-x^2",
     "cubic": "x^3",
     "negative_cubic": "-x^3",
-    "square_root": "\\sqrt(x)"
+    "square_root": "sqrt(x)"
 }
-
+let functionsToLatex = {
+    "x": "x",
+    "-x": "-x",
+    "x^2": "x^2",
+    "-x^2": "-x^2",
+    "x^3": "x^3",
+    "-x^3": "-x^3",
+    "sqrt(x)": "\\sqrt(x)"
+}
 function getKeyByValue(object, value) {
     return Object.keys(object).find(key => object[key] === value);
 }
 
-function checkEquation(userJson, functions) {
+function getRandomEquation() {
+    const keys = Object.values(functions);
+    let randomIndex = Math.floor(Math.random() * keys.length);
+    document.getElementById("arcade-equation").innerHTML =  "$$" + functionsToLatex[keys[randomIndex]] + "$$";
+    return keys[randomIndex];
+}
+
+function checkEquation(userJson, functions, equation) {
+    let latexEquation = functionsToLatex[equation];
     userAnswer = userJson.result;
-    let equation = document.getElementById("arcade-equation").textContent;
-    let correctAnswer = getKeyByValue(functions, equation);
+    let correctAnswer = getKeyByValue(functions, latexEquation);
     let result = (userAnswer == correctAnswer);
     console.log("result: " + result);
     console.log("equation" + equation);
     console.log("userAnswer: " + userAnswer);
-    console.log("correctAnswer: " + JSON.stringify(functions));
+    console.log("correctAnswer: " + correctAnswer);
     resultOn(result);
 }   
 
 document.addEventListener('DOMContentLoaded', (event) => {
 
-    function getRandomEquation() {
-        const keys = Object.values(functions);
-        let randomIndex = Math.floor(Math.random() * keys.length);
-        document.getElementById("arcade-equation").innerHTML =  "$$" + keys[randomIndex] + "$$";
-        return keys[randomIndex];
-    }
-
-    getRandomEquation();
+    let randomEquation = getRandomEquation();
 
     // Reference to the canvas and div element
     const canvas = document.getElementById('canvas-drawing');
@@ -176,7 +186,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         .then(response => response.json()) // Recieve raw responce from the server, also returns a promise
         .then(data => {  // Process the response data, eg showing the result to the user
             console.log('Success:', data);
-            checkEquation(data, functions);
+            checkEquation(data, functions, randomEquation);
+            randomEquation = getRandomEquation();
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, 'arcade-equation']);
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -200,6 +212,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
             ctx.stroke(path);
 
             sendCanvasToServer();
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            path = new Path2D();
         }
     }
 });

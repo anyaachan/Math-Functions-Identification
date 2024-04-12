@@ -3,7 +3,6 @@ from flask import Flask, render_template, request, jsonify
 import tensorflow as tf
 import os, warnings
 
-from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.preprocessing import image_dataset_from_directory
