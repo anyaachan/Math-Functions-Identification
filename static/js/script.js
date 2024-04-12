@@ -5,6 +5,7 @@ function pauseOn() {
 
 function pauseOff() {
     document.getElementById('pause-screen').style.display = 'none';
+    let currentDur = (document.getElementById("arcade-time").textContent).slice(-2);
 }
 
 function resultOn(result) {
@@ -59,8 +60,6 @@ function checkEquation(userJson, functions, equation) {
     userAnswer = userJson.result;
     let correctAnswer = getKeyByValue(functions, latexEquation);
     let result = (userAnswer == correctAnswer);
-    console.log("result: " + result);
-    console.log("equation" + equation);
     console.log("userAnswer: " + userAnswer);
     console.log("correctAnswer: " + correctAnswer);
     resultOn(result);
@@ -69,9 +68,10 @@ function checkEquation(userJson, functions, equation) {
 let duration = 20;
 
 function startTimer(duration) {
+    
     let timer = duration;
     var seconds;
-    setInterval(function () {
+    intervalID = setInterval(function () {
         seconds = parseInt(timer, 10)
         if (seconds < 10) {
             seconds = "0" + seconds;
@@ -89,7 +89,8 @@ function startTimer(duration) {
 
 document.addEventListener('DOMContentLoaded', (event) => {
 
-    startTimer(duration);
+    startTimer(duration, false);
+
     let randomEquation = getRandomEquation();
 
     // Reference to the canvas and div element
@@ -220,7 +221,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Stop drawing when mouse is released
     canvas.onmouseup = () => {
         drawing = false;
-        sendCanvasToServer();
+        getCanvasContent();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         path = new Path2D();
     }
@@ -233,7 +234,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             path.lineTo(x, y);
             ctx.stroke(path);
 
-            sendCanvasToServer();
+            getCanvasContent();
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             path = new Path2D();
         }
