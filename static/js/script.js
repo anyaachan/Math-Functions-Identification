@@ -1,3 +1,5 @@
+let duration = 20;
+let heartsCount = 3;
 
 function pauseOn() {
     document.getElementById('pause-screen').style.display = 'block';
@@ -8,12 +10,36 @@ function pauseOff() {
     let currentDur = (document.getElementById("arcade-time").textContent).slice(-2);
 }
 
+function heartsDisplay(heartsCount) {
+    switch(heartsCount) {
+        case 1:
+            document.getElementById('life1').src = "static/media/heart-filled.svg";
+            document.getElementById('life2').src = "static/media/heart-empty.svg";
+            document.getElementById('life3').src = "static/media/heart-empty.svg";
+            break;
+        case 2:
+            document.getElementById('life1').src = "static/media/heart-filled.svg";
+            document.getElementById('life2').src = "static/media/heart-filled.svg";
+            document.getElementById('life3').src = "static/media/heart-empty.svg";
+            break;
+        case 3:
+            document.getElementById('life1').src = "static/media/heart-filled.svg";
+            document.getElementById('life2').src = "static/media/heart-filled.svg";
+            document.getElementById('life3').src = "static/media/heart-filled.svg";
+            break;
+    }
+}
+
 function resultOn(result) {
     document.getElementById('result-screen').style.display = 'block';
     if (result == true) {
-        document.getElementById('correct').style.display = 'block';}
+        document.getElementById('correct').style.display = 'block';
+        heartsDisplay(heartsCount);
+    }
     else {
         document.getElementById('incorrect').style.display = 'block';
+        heartsCount -= 1;
+        heartsDisplay(heartsCount);
     }
 }
 
@@ -63,8 +89,6 @@ function checkEquation(userJson, functions, equation) {
     console.log("correctAnswer: " + correctAnswer);
     return result;
 }   
-
-let duration = 20;
 
 function startTimer(duration) {
     
