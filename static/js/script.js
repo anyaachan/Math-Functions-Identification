@@ -173,6 +173,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     }
 
+    // Function to download the canvas content
     function getCanvasContent() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.strokeStyle = '#000000';
@@ -182,13 +183,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const downloadElement = document.createElement('a');
         downloadElement.href = canvasURL;
                 
-        // This is the name of our downloaded file
+        // This is the name of the downloaded file
         downloadElement.download = "download-this-canvas";
 
         downloadElement.click();
         downloadElement.remove();
     }
 
+    // Function to send the canvas content on evaluation
     function sendCanvasToServer() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.strokeStyle = '#000000';
