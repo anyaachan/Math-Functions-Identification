@@ -23,9 +23,9 @@ app = Flask(__name__)
 
 SIZE = 224, 224
 AUTOTUNE = tf.data.AUTOTUNE
-ANSWERS_ROUTE = "/Users/anna-alexandradanchenko/Documents/University/IdentMathFunc/Math-Functions-Identification/pre_generated_functions"
+ANSWERS_ROUTE = "pre_generated_functions"
 
-class_names = ['linear', 'negative_linear', 'negative_quadratic', 'quadratic', 'square_root']
+class_names = ['cubic', 'linear', 'negative_linear', 'negative_quadratic', 'quadratic', 'square_root']
 
 model_path = 'model/model.keras'
 model = load_model(model_path, custom_objects={'KerasLayer': hub.KerasLayer})
@@ -59,7 +59,7 @@ def upload_image():
         white_background_image = Image.new("RGBA", image.size, "WHITE")  # Create a white RGBA background
         white_background_image.paste(image, (0, 0), image)  # Paste the image on a white background
         final_img = white_background_image.convert("RGB")
-        final_img = final_img.resize(SIZE)
+        final_img = final_img.resize(SIZE, Image.BILINEAR)
 
         final_img = np.array(final_img)
         final_img = np.expand_dims(final_img, axis=0)
