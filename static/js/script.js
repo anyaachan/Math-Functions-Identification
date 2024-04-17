@@ -61,7 +61,7 @@ function checkEquation(userJson, functions, equation) {
     let result = (userAnswer == correctAnswer);
     console.log("userAnswer: " + userAnswer);
     console.log("correctAnswer: " + correctAnswer);
-    resultOn(result);
+    return result;
 }   
 
 let duration = 20;
@@ -192,6 +192,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // Function to send the canvas content on evaluation
     function sendCanvasToServer() {
+        const canvasURLRed = canvas.toDataURL('image/png');
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = 'green';
+        ctx.stroke(path);
+
+        const canvasURLGreen = canvas.toDataURL('image/png');
+    
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.strokeStyle = '#000000';
         ctx.stroke(path);
@@ -210,10 +218,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
         .then(response => response.json()) // Recieve raw responce from the server, also returns a promise
         .then(data => {  // Process the response data, eg showing the result to the user
             console.log('Success:', data);
-            checkEquation(data, functions, randomEquation);
+            resultOn(checkEquation(data, functions, randomEquation));
 
             encoded_answer = data.correct_function
             document.getElementById("image-answer").src = encoded_answer;
+
+            if (checkEquation(data, functions, randomEquation)) {
+                document.getElementById("image-user-drawing").src = canvasURLGreen;
+            }
+            else {
+                document.getElementById("image-user-drawing").src = canvasURLRed;
+            }
 
             randomEquation = getRandomEquation();
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, 'arcade-equation']);

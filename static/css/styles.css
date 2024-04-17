@@ -463,7 +463,6 @@ background-clip: text;
 
 .basic-button {
     font-size: 6rem;
-    /* Group 36 */
 
     font-family: 'Rubik Mono One';
     font-style: normal;
@@ -479,14 +478,12 @@ background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-
 }
 
 .result { 
     display: none;
     font-size: 6rem;
 }
-/* CORRECT */
 
 .resources {
     display: none;
@@ -496,16 +493,32 @@ background-clip: text;
     width: 100%;
     height: 100%;
     z-index: 10;
+    display: grid;
 }
 
 #canvas-result img {
+    grid-row: 1;
+    grid-column: 1;
     margin: auto;
     height: 100%;
     width: 100%;
 }
 
+#image-user-drawing { 
+    z-index: 5;
+    opacity: 0.5;
+}
+
+#image-answer { 
+    z-index: 10;
+}
+
 #correct {
     color:  #32CD32;
+}
+
+#incorrect {
+    color: red;
 }
 
 @media (max-width: 1100px) {
