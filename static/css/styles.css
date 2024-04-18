@@ -274,7 +274,7 @@ background-clip: text;
     justify-content: center;
 }
 
-#card-space-arcade, #card-space-result {
+#card-space-arcade, #card-space-result, #card-space-eternal {
     width: 100%; /* Adjust based on your design */
     display: flex;
     flex: 0 0 0;
@@ -335,7 +335,7 @@ background-clip: text;
     border-left: 1.6rem solid black; /* Change border-right to border-left */
 }
 
-#arcade-elements {
+#arcade-elements, #eternal-elements {
     margin: 0rem 2rem 0rem 1rem;
     height: 100%;
     display: grid;
@@ -343,7 +343,7 @@ background-clip: text;
     flex-basis: 100%;
 }
 
-#arcade-time-lives{
+#arcade-time-lives, #eternal-attempts-time {
     height: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -356,7 +356,7 @@ background-clip: text;
     margin: 0;
 }
 
-#arcade-info {
+#arcade-info, #eternal-info {
     height: 100%;
     display: grid;
     gap: 2rem;
@@ -375,7 +375,7 @@ background-clip: text;
     font-weight: 700;
 }
 
-#arcade-time, #arcade-lives{
+#arcade-time, #arcade-lives, #eternal-attempts, #eternal-time{
     margin: 0rem;
     font-size: 5rem;
     display: flex;

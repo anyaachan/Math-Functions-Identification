@@ -14,11 +14,11 @@
     <header id="header"></header>
 
     <main id="main-gamemode">
-        <div id="card-eternal" class="card">
+        <a id="card-eternal" class="card" href = "{{ url_for('eternal') }}">
             <h1>ETERNAL</h1>
             <p>Infinite Game with feedback, No Hints or Links</p>
             <p>Train and Perfect!</p>
-        </div>
+        </a>
 
         <a id="card-arcade" class="card" href="{{ url_for('arcade') }}">
             <h1>ARCADE</h1>
@@ -26,11 +26,11 @@
             <p>Test Your Knowledge Under Stress!</p>
         </a>
 
-        <div id="card-mentor" class="card">
+        <a id="card-mentor" class="card" href = "">
             <h1>MENTOR</h1>
             <p>Useful Resources and Feedback</p>
             <p>Read, Remember and Improve!</p>
-        </div>
+        </a>
     </main>
 </body>
 </html>

@@ -38,10 +38,6 @@ def home():
 def gamemode():
     return render_template('gamemode.html')
 
-@app.route("/resultscreen")
-def resultscreen():
-    return render_template('result-screen.html')
-
 @app.route("/howtoplay")
 def howtoplay():
     return render_template('howtoplay.html')
@@ -49,6 +45,10 @@ def howtoplay():
 @app.route("/arcade")
 def arcade():
     return render_template('arcade.html')
+
+@app.route("/eternal")
+def eternal():
+    return render_template('eternal.html')
 
 @app.route("/upload-image", methods=['POST'])
 def upload_image():
