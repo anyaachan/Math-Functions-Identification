@@ -265,7 +265,7 @@ background-clip: text;
     object-fit: contain; /* Ensures the image is fully visible */
 }
 
-#main-arcade {
+#main-game {
     width: 100vw;
     height: 100vh;
     display: flex;

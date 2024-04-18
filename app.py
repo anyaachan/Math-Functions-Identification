@@ -38,6 +38,10 @@ def home():
 def gamemode():
     return render_template('gamemode.html')
 
+@app.route("/resultscreen")
+def resultscreen():
+    return render_template('result-screen.html')
+
 @app.route("/howtoplay")
 def howtoplay():
     return render_template('howtoplay.html')

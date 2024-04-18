@@ -27,6 +27,10 @@ function heartsDisplay(heartsCount) {
             document.getElementById('life2').src = "static/media/heart-filled.svg";
             document.getElementById('life3').src = "static/media/heart-filled.svg";
             break;
+        case 0: 
+            document.getElementById('life1').src = "static/media/heart-filled.svg";
+            document.getElementById('life2').src = "static/media/heart-filled.svg";
+            document.getElementById('life3').src = "static/media/heart-filled.svg";
     }
 }
 
@@ -35,11 +39,15 @@ function resultOn(result) {
     if (result == true) {
         document.getElementById('correct').style.display = 'block';
         heartsDisplay(heartsCount);
+        console.log("Correct, hearts count: " + heartsCount)
     }
     else {
         document.getElementById('incorrect').style.display = 'block';
         heartsCount -= 1;
         heartsDisplay(heartsCount);
+        if (heartsCount == 0) {
+            heartsCount = 3;
+        }
     }
 }
 
@@ -109,6 +117,8 @@ function startTimer(duration) {
 
     }, 1000)
 }
+
+let backgroundDetails = ""
 
 document.addEventListener('DOMContentLoaded', (event) => {
 
