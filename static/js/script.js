@@ -12,6 +12,11 @@ function pauseOn() {
     document.getElementById('pause-screen').style.display = 'block';
 }
 
+function pauseOff() {
+    document.getElementById('pause-screen').style.display = 'none';
+    continueTimer();
+}
+
 function continueTimer() {
     if (window.location.pathname == "/eternal") {
         let currentTime = (document.getElementById("eternal-time").textContent).slice(-2);
@@ -23,9 +28,9 @@ function continueTimer() {
     }
 }
 
-function pauseOff() {
-    document.getElementById('pause-screen').style.display = 'none';
-    continueTimer();
+function displayAnswerRatio() {
+    let ratio = nCorrectAnsw + "/" + (nCorrectAnsw + nIncorrectAnsw);
+    document.getElementById("eternal-ratio").textContent = ratio;
 }
 
 function gameOver() {
@@ -35,7 +40,7 @@ function gameOver() {
 }
 
 function heartsDisplay(heartsCount) {
-    switch(heartsCount) {
+    switch (heartsCount) {
         case 1:
             document.getElementById('life1').src = "static/media/heart-filled.svg";
             document.getElementById('life2').src = "static/media/heart-empty.svg";
@@ -51,7 +56,7 @@ function heartsDisplay(heartsCount) {
             document.getElementById('life2').src = "static/media/heart-filled.svg";
             document.getElementById('life3').src = "static/media/heart-filled.svg";
             break;
-        case 0: 
+        case 0:
             document.getElementById('life1').src = "static/media/heart-filled.svg";
             document.getElementById('life2').src = "static/media/heart-filled.svg";
             document.getElementById('life3').src = "static/media/heart-filled.svg";
@@ -73,9 +78,10 @@ function resultOn(result) {
             heartsDisplay(heartsCount);
         }
 
-        if (window.location.pathname = "/eternal") {
+        if (window.location.pathname == "/eternal") {
             nCorrectAnsw += 1;
-                }
+            displayAnswerRatio();
+        }
     }
     else {
         document.getElementById('incorrect').style.display = 'block';
@@ -86,7 +92,13 @@ function resultOn(result) {
                 heartsCount = 3;
             }
         }
+
+        if (window.location.pathname == "/eternal") {
+            nIncorrectAnsw += 1;
+            displayAnswerRatio();
+        }
     }
+
 }
 
 function resultOff() {
@@ -97,7 +109,7 @@ function resultOff() {
 }
 
 function toMenu() {
-    window.location.href="/";
+    window.location.href = "/";
 }
 
 let functions = {
@@ -137,7 +149,7 @@ function getRandomEquation() {
     let equations = document.getElementsByClassName("equation");
 
     for (var i = 0; i < equations.length; i++) {
-    equations[i].innerHTML = latexContent;
+        equations[i].innerHTML = latexContent;
     }
 
     return keys[randomIndex];
@@ -150,7 +162,7 @@ function checkEquation(userJson, functions, equation) {
     console.log("userAnswer: " + userAnswer);
     console.log("correctAnswer: " + correctAnswer);
     return result;
-}   
+}
 
 function startTimer(duration) {
     let timer = duration;
@@ -173,7 +185,7 @@ function startTimer(duration) {
 
     }, 1000);
 
-    document.getElementById("pause").addEventListener("click", function() {
+    document.getElementById("pause").addEventListener("click", function () {
         clearInterval(intervalID);
     })
 }
@@ -198,18 +210,19 @@ function startStopwatch(stopwatch) {
         time++;
     }, 1000)
 
-    document.getElementById("pause").addEventListener("click", function() {
+    document.getElementById("pause").addEventListener("click", function () {
         clearInterval(intervalID);
     })
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    
+
     if (window.location.pathname == "/arcade") {
         startTimer(duration);
     }
 
     if (window.location.pathname == "/eternal") {
+        displayAnswerRatio();
         startStopwatch(stopwatch);
     }
 
@@ -236,14 +249,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         // Get ratio of the canvas buffer size to the element size. 
         // Buffer Size - actual drawing area in pixels
         // Element size - physical size of the element as specified in the css -> displayed on the screen
-        const scaleX = canvas.width / rect.width; 
-        const scaleY = canvas.height / rect.height; 
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
 
         // Return accurate mouse coordinates even when canvas is resized. 
         return {
             // Scale coordinates
-            x: (e.clientX - rect.left) * scaleX, 
-            y: (e.clientY - rect.top) * scaleY  
+            x: (e.clientX - rect.left) * scaleX,
+            y: (e.clientY - rect.top) * scaleY
         }
     }
 
@@ -265,8 +278,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         ctx.strokeStyle = '#B70000';
 
         // Define coordinates of the start position
-        const {x, y} = getEventCanvasPosition(e);
-        
+        const { x, y } = getEventCanvasPosition(e);
+
         // Set drawing cursor to the start position
         path.moveTo(x, y);
         path.lineTo(x, y);
@@ -279,7 +292,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     canvas.onmousemove = (e) => {
         // If the mouse is pressed, draw
         if (drawing) {
-            const {x, y} = getEventCanvasPosition(e);
+            const { x, y } = getEventCanvasPosition(e);
 
             // Calculate the midpoint between the last point and the current point
             let midX = (lastX + x) / 2;
@@ -292,7 +305,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             lastX = x;
             lastY = y;
-            
+
         }
     }
 
@@ -305,7 +318,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         let canvasURL = canvas.toDataURL();
         const downloadElement = document.createElement('a');
         downloadElement.href = canvasURL;
-                
+
         // This is the name of the downloaded file
         downloadElement.download = "download-this-canvas";
 
@@ -322,44 +335,44 @@ document.addEventListener('DOMContentLoaded', (event) => {
         ctx.stroke(path);
 
         const canvasURLGreen = canvas.toDataURL('image/png');
-    
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.strokeStyle = '#000000';
         ctx.stroke(path);
 
         const canvasURL = canvas.toDataURL('image/png');
-        
+
         // Function to make HTTP request
         fetch('/upload-image', { // Flask reference, where to send the request
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json' // Signify that the request is a Json 
             },
-            body: JSON.stringify({ image: canvasURL, functionName: getKeyByValue(functions, randomEquation)}) // The content being send to server. 
+            body: JSON.stringify({ image: canvasURL, functionName: getKeyByValue(functions, randomEquation) }) // The content being send to server. 
             // Convert image into JSON string
         })
-        .then(response => response.json()) // Recieve raw responce from the server, also returns a promise
-        .then(data => {  // Process the response data, eg showing the result to the user
-            console.log('Success:', data);
-            resultOn(checkEquation(data, functions, randomEquation));
+            .then(response => response.json()) // Recieve raw responce from the server, also returns a promise
+            .then(data => {  // Process the response data, eg showing the result to the user
+                console.log('Success:', data);
+                resultOn(checkEquation(data, functions, randomEquation));
 
-            encoded_answer = data.correct_function
-            document.getElementById("image-answer").src = encoded_answer;
+                encoded_answer = data.correct_function
+                document.getElementById("image-answer").src = encoded_answer;
 
-            if (checkEquation(data, functions, randomEquation)) {
-                document.getElementById("image-user-drawing").src = canvasURLGreen;
-            }
-            else {
-                document.getElementById("image-user-drawing").src = canvasURLRed;
-            }
+                if (checkEquation(data, functions, randomEquation)) {
+                    document.getElementById("image-user-drawing").src = canvasURLGreen;
+                }
+                else {
+                    document.getElementById("image-user-drawing").src = canvasURLRed;
+                }
 
-            randomEquation = getRandomEquation();
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub, 'arcade-equation']);
+                randomEquation = getRandomEquation();
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, 'arcade-equation']);
 
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     }
 
 
@@ -372,10 +385,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     canvas.onmouseleave = (e) => {
-        if(drawing) {
+        if (drawing) {
             drawing = false;
 
-            const {x, y} = getEventCanvasPosition(e);
+            const { x, y } = getEventCanvasPosition(e);
             path.lineTo(x, y);
             ctx.stroke(path);
 

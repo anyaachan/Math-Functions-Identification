@@ -344,7 +344,7 @@ background-clip: text;
     flex-basis: 100%;
 }
 
-#arcade-time-lives, #eternal-attempts-time {
+#arcade-time-lives, #eternal-ratio-time {
     height: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -377,7 +377,7 @@ background-clip: text;
     font-weight: 700;
 }
 
-#arcade-time, #arcade-lives, #eternal-attempts, #eternal-time{
+#arcade-time, #arcade-lives, #eternal-ratio, #eternal-time{
     margin: 0rem;
     font-size: 5rem;
     display: flex;
@@ -481,7 +481,7 @@ background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 
-    transition: 0.2s;
+    transition: 0;
 }
 
 .basic-button:hover {
