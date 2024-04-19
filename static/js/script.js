@@ -72,6 +72,10 @@ function resultOn(result) {
             score += seconds_left * 200;
             heartsDisplay(heartsCount);
         }
+
+        if (window.location.pathname = "/eternal") {
+            nCorrectAnsw += 1;
+                }
     }
     else {
         document.getElementById('incorrect').style.display = 'block';
