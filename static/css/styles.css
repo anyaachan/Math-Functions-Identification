@@ -213,7 +213,7 @@ main {
     background-clip: text;
 }
 
-#card-eternal h1{
+#card-eternal h1, #eternal-title{
 background: linear-gradient(90deg, #B60000 0%, #FF7A00 100%);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
@@ -276,6 +276,7 @@ background-clip: text;
 
 #card-space-arcade, #card-space-result, #card-space-eternal {
     width: 100%; /* Adjust based on your design */
+    height: 70vh;
     display: flex;
     flex: 0 0 0;
     flex-direction: row;   
@@ -351,7 +352,7 @@ background-clip: text;
     
 }
 
-#arcade-title {
+#arcade-title, #eternal-title {
     font-size: 4rem;
     margin: 0;
 }
@@ -364,13 +365,14 @@ background-clip: text;
     grid-template-rows: 1fr 2fr;
 }
 
-#arcade-equation{
+.equation {
     height:auto;
     margin:0rem;
+    padding: 0rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 8rem;
+    font-size: 6.5em;
     font-family: 'Rubik', sans-serif;
     font-weight: 700;
 }

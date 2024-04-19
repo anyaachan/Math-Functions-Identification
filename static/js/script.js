@@ -1,5 +1,6 @@
 let duration = 20;
 let heartsCount = 3;
+let score = 0;
 
 function pauseOn() {
     document.getElementById('pause-screen').style.display = 'block';
@@ -8,6 +9,12 @@ function pauseOn() {
 function pauseOff() {
     document.getElementById('pause-screen').style.display = 'none';
     let currentDur = (document.getElementById("arcade-time").textContent).slice(-2);
+}
+
+function gameOver() {
+    document.getElementById('game-over-screen').style.display = 'block';
+    document.getElementById('score-info').textContent = "Score: " + score;
+    score = 0;
 }
 
 function heartsDisplay(heartsCount) {
@@ -31,6 +38,7 @@ function heartsDisplay(heartsCount) {
             document.getElementById('life1').src = "static/media/heart-filled.svg";
             document.getElementById('life2').src = "static/media/heart-filled.svg";
             document.getElementById('life3').src = "static/media/heart-filled.svg";
+            gameOver();
     }
 }
 
@@ -38,15 +46,21 @@ function resultOn(result) {
     document.getElementById('result-screen').style.display = 'block';
     if (result == true) {
         document.getElementById('correct').style.display = 'block';
-        heartsDisplay(heartsCount);
-        console.log("Correct, hearts count: " + heartsCount)
+        let seconds_left = parseInt((document.getElementById("arcade-time").textContent).slice(-2));
+        score += 2000;
+        score += seconds_left * 200;
+        if (window.location.pathname == "/arcade") {
+            heartsDisplay(heartsCount);
+        }
     }
     else {
         document.getElementById('incorrect').style.display = 'block';
-        heartsCount -= 1;
-        heartsDisplay(heartsCount);
-        if (heartsCount == 0) {
-            heartsCount = 3;
+        if (window.location.pathname == "/arcade") {
+            heartsCount -= 1;
+            heartsDisplay(heartsCount);
+            if (heartsCount == 0) {
+                heartsCount = 3;
+            }
         }
     }
 }
@@ -60,6 +74,7 @@ function resultOff() {
 function toMenu() {
     window.location.href="/";
 }
+
 let functions = {
     "linear": "x",
     "negative_linear": "-x",
@@ -69,6 +84,7 @@ let functions = {
     "negative_cubic": "-x^3",
     "square_root": "sqrt(x)"
 }
+
 let functionsToLatex = {
     "x": "x",
     "-x": "-x",
@@ -78,6 +94,7 @@ let functionsToLatex = {
     "-x^3": "-x^3",
     "sqrt(x)": "\\sqrt(x)"
 }
+
 function getKeyByValue(object, value) {
     return Object.keys(object).find(key => object[key] === value);
 }
@@ -85,7 +102,13 @@ function getKeyByValue(object, value) {
 function getRandomEquation() {
     const keys = Object.values(functions);
     let randomIndex = Math.floor(Math.random() * keys.length);
-    document.getElementById("arcade-equation").innerHTML =  "$$" + functionsToLatex[keys[randomIndex]] + "$$";
+    let latexContent = "$$" + functionsToLatex[keys[randomIndex]] + "$$"
+    let equations = document.getElementsByClassName("equation");
+
+    for (var i = 0; i < equations.length; i++) {
+    equations[i].innerHTML = latexContent;
+    }
+
     return keys[randomIndex];
 }
 
@@ -99,7 +122,6 @@ function checkEquation(userJson, functions, equation) {
 }   
 
 function startTimer(duration) {
-    
     let timer = duration;
     var seconds;
     intervalID = setInterval(function () {
@@ -112,6 +134,7 @@ function startTimer(duration) {
 
         timer = timer - 1;
         if (timer < 0) {
+            gameOver();
             timer = duration;
         }
 
@@ -121,8 +144,10 @@ function startTimer(duration) {
 let backgroundDetails = ""
 
 document.addEventListener('DOMContentLoaded', (event) => {
-
-    startTimer(duration, false);
+    
+    if (window.location.pathname == "/arcade") {
+        startTimer(duration);
+    }
 
     let randomEquation = getRandomEquation();
 
@@ -266,6 +291,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             randomEquation = getRandomEquation();
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, 'arcade-equation']);
+
         })
         .catch((error) => {
             console.error('Error:', error);
