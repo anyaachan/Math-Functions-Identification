@@ -1,16 +1,31 @@
 let duration = 20;
 let heartsCount = 3;
 let score = 0;
+
 let stopwatch = 0;
+var intervalID;
+
+let nCorrectAnsw = 0;
+let nIncorrectAnsw = 0;
 
 function pauseOn() {
     document.getElementById('pause-screen').style.display = 'block';
 }
 
+function continueTimer() {
+    if (window.location.pathname == "/eternal") {
+        let currentTime = (document.getElementById("eternal-time").textContent).slice(-2);
+        startStopwatch(currentTime);
+    }
+    if (window.location.pathname == "/arcade") {
+        let currentDur = (document.getElementById("arcade-time").textContent).slice(-2);
+        startTimer(currentDur);
+    }
+}
+
 function pauseOff() {
     document.getElementById('pause-screen').style.display = 'none';
-    let currentDur = (document.getElementById("arcade-time").textContent).slice(-2);
-    startTimer(currentDur);
+    continueTimer();
 }
 
 function gameOver() {
@@ -46,12 +61,15 @@ function heartsDisplay(heartsCount) {
 
 function resultOn(result) {
     document.getElementById('result-screen').style.display = 'block';
+    clearInterval(intervalID);
+
     if (result == true) {
         document.getElementById('correct').style.display = 'block';
-        let seconds_left = parseInt((document.getElementById("arcade-time").textContent).slice(-2));
-        score += 2000;
-        score += seconds_left * 200;
+
         if (window.location.pathname == "/arcade") {
+            let seconds_left = parseInt((document.getElementById("arcade-time").textContent).slice(-2));
+            score += 2000;
+            score += seconds_left * 200;
             heartsDisplay(heartsCount);
         }
     }
@@ -71,6 +89,7 @@ function resultOff() {
     document.getElementById('result-screen').style.display = 'none';
     document.getElementById('correct').style.display = 'none';
     document.getElementById('incorrect').style.display = 'none';
+    continueTimer()
 }
 
 function toMenu() {
@@ -84,7 +103,10 @@ let functions = {
     "negative_quadratic": "-x^2",
     "cubic": "x^3",
     "negative_cubic": "-x^3",
-    "square_root": "sqrt(x)"
+    "square_root": "sqrt(x)",
+    "negative_square_root": "-sqrt(x)",
+    "exponential": "e^x",
+    "logarithmic": "log(x)"
 }
 
 let functionsToLatex = {
@@ -94,7 +116,10 @@ let functionsToLatex = {
     "-x^2": "-x^2",
     "x^3": "x^3",
     "-x^3": "-x^3",
-    "sqrt(x)": "\\sqrt(x)"
+    "sqrt(x)": "\\sqrt(x)",
+    "-sqrt(x)": "-\\sqrt(x)",
+    "e^x": "e^x",
+    "log(x)": "\log_{e}(x)"
 }
 
 function getKeyByValue(object, value) {
@@ -126,6 +151,7 @@ function checkEquation(userJson, functions, equation) {
 function startTimer(duration) {
     let timer = duration;
     var seconds;
+
     intervalID = setInterval(function () {
         seconds = parseInt(timer, 10)
         if (seconds < 10) {
@@ -138,6 +164,7 @@ function startTimer(duration) {
         if (timer < 0) {
             gameOver();
             timer = duration;
+            var intervalID;
         }
 
     }, 1000);
@@ -166,6 +193,10 @@ function startStopwatch(stopwatch) {
         document.getElementById("eternal-time").textContent = minutes + ":" + seconds;
         time++;
     }, 1000)
+
+    document.getElementById("pause").addEventListener("click", function() {
+        clearInterval(intervalID);
+    })
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {

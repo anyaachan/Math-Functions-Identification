@@ -25,7 +25,8 @@ SIZE = 224, 224
 AUTOTUNE = tf.data.AUTOTUNE
 ANSWERS_ROUTE = "pre_generated_functions"
 
-class_names = ['cubic', 'linear', 'negative_cubic', 'negative_linear', 'negative_quadratic', 'quadratic', 'square_root']
+class_names = ['cubic', 'linear', 'negative_cubic', 'negative_linear', 'negative_quadratic', 'negative_square_root', 'quadratic', 'square_root']
+
 
 model_path = 'model/model.keras'
 model = load_model(model_path, custom_objects={'KerasLayer': hub.KerasLayer})
