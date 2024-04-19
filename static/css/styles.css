@@ -480,6 +480,12 @@ background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+
+    transition: 0.2s;
+}
+
+.basic-button:hover {
+    scale:1.05;
 }
 
 .result { 

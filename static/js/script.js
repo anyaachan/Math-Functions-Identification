@@ -1,6 +1,7 @@
 let duration = 20;
 let heartsCount = 3;
 let score = 0;
+let stopwatch = 0;
 
 function pauseOn() {
     document.getElementById('pause-screen').style.display = 'block';
@@ -146,12 +147,35 @@ function startTimer(duration) {
     })
 }
 
-let backgroundDetails = ""
+function startStopwatch(stopwatch) {
+    let time = stopwatch;
+    let seconds;
+    let minutes;
+
+    intervalID = setInterval(function () {
+        minutes = parseInt(time / 60, 10)
+        seconds = parseInt(time % 60, 10);
+
+        if (seconds < 10) {
+            seconds = "0" + seconds;
+        }
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+        }
+
+        document.getElementById("eternal-time").textContent = minutes + ":" + seconds;
+        time++;
+    }, 1000)
+}
 
 document.addEventListener('DOMContentLoaded', (event) => {
     
     if (window.location.pathname == "/arcade") {
         startTimer(duration);
+    }
+
+    if (window.location.pathname == "/eternal") {
+        startStopwatch(stopwatch);
     }
 
     let randomEquation = getRandomEquation();
