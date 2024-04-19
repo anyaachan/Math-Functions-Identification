@@ -1,22 +1,22 @@
 {% extends 'base-game.html' %}
 
 {% block content %}
-        <div id="card-space-eternal" class = "card-space">
-            <div id="graph-drawing" class="card">
-                <div class="y-axis"></div>
-                <div class="x-axis"></div>
-                <canvas id="canvas-drawing" width="2048" height="2048"></canvas>
+<div id="card-space-eternal" class="card-space">
+    <div id="graph-drawing" class="card">
+        <div class="y-axis"></div>
+        <div class="x-axis"></div>
+        <canvas id="canvas-drawing" width="2048" height="2048"></canvas>
+    </div>
+    <div id="eternal-elements" class="elements">
+        <div id="eternal-title">ETERNAL</div>
+        <div id="eternal-info">
+            <div id="eternal-attempts-time">
+                <div id="eternal-attempts" class="card">3/4</div>
+                <div id="eternal-time" class="card"></div>
             </div>
-            <div id = "eternal-elements" class = "elements">
-                <div id = "eternal-title">ETERNAL</div>
-                <div id = "eternal-info">
-                    <div id = "eternal-attempts-time">
-                        <div id = "eternal-attempts" class="card">3/4</div>
-                        <div id = "eternal-time" class="card"></div>
-                    </div>
-                    <div id = "eternal-equation" class = "card equation"></div>
-                </div>
-            </div>
+            <div id="eternal-equation" class="card equation"></div>
         </div>
-        
+    </div>
+</div>
+
 {% endblock %}

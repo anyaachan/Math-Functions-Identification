@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>SketchMath</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
+
 <body>
     <div class="background">
-        <img class="papertexture"  src="static/media/paper-texture.jpeg" alt="Background Placeholder"/>
+        <img class="papertexture" src="static/media/paper-texture.jpeg" alt="Background Placeholder" />
         <div id="overlay"></div>
     </div>
-    
+
     <header id="header"></header>
 
     <main id="main-gamemode">
-        <a id="card-eternal" class="card" href = "{{ url_for('eternal') }}">
+        <a id="card-eternal" class="card" href="{{ url_for('eternal') }}">
             <h1>ETERNAL</h1>
             <p>Infinite Game with feedback, No Hints or Links</p>
             <p>Train and Perfect!</p>
@@ -26,11 +28,12 @@
             <p>Test Your Knowledge Under Stress!</p>
         </a>
 
-        <a id="card-mentor" class="card" href = "">
+        <a id="card-mentor" class="card" href="">
             <h1>MENTOR</h1>
             <p>Useful Resources and Feedback</p>
             <p>Read, Remember and Improve!</p>
         </a>
     </main>
 </body>
+
 </html>
