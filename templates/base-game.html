@@ -24,7 +24,7 @@
     
     <main id="main-game">
         <div id = "pause-div">
-            <button onclick="pauseOn()" class = "pause-button" id="pause-arcade">
+            <button onclick="pauseOn()" class = "pause-button" id="pause">
                 <img src="static/media/pause.svg" alt="Pause">
             </button>
         </div>
@@ -50,7 +50,7 @@
             </div>
             <div id="main-pause">
                 <div id="pause-title">Game Over!</div>
-                <div id="score-info">13000</div>
+                <div id="score-info"></div>
                 <button onclick="location.reload()" class = basic-button>REPLAY</button>
                 <button onclick="toMenu()" class = basic-button>MENU</button>
             </div>
@@ -67,7 +67,7 @@
                         <img src="static/media/pause.svg" alt="Pause">
                     </button>
                 </div>
-                <div id="card-space-result">
+                <div id="card-space-result" class = "card-space">
                     <div id="graph-result" class="card">
                         <div class="y-axis"></div>
                         <div class="x-axis"></div>
@@ -76,7 +76,7 @@
                             <img id = "image-answer">
                         </div>
                     </div>
-                    <div id = "result-elements">
+                    <div id = "result-elements" class = "elements">
                         <div id="result-title">
                             <div id="correct" class="result">CORRECT</div>
                             <div id="incorrect" class="result">INCORRECT</div>

@@ -9,6 +9,7 @@ function pauseOn() {
 function pauseOff() {
     document.getElementById('pause-screen').style.display = 'none';
     let currentDur = (document.getElementById("arcade-time").textContent).slice(-2);
+    startTimer(currentDur);
 }
 
 function gameOver() {
@@ -138,7 +139,11 @@ function startTimer(duration) {
             timer = duration;
         }
 
-    }, 1000)
+    }, 1000);
+
+    document.getElementById("pause").addEventListener("click", function() {
+        clearInterval(intervalID);
+    })
 }
 
 let backgroundDetails = ""
