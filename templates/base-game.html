@@ -18,11 +18,7 @@
         MathJax.Hub.Queue(["Typeset",MathJax.Hub,math]);
     </script>
 
-
-    <div class="background">
-        <img class="papertexture" src="static/media/paper-texture.jpeg" alt="Background Placeholder" />
-        <div id="overlay"></div>
-    </div>
+    {% include 'background.html' %}
 
     <main id="main-game">
         <div id="pause-div">
@@ -34,10 +30,7 @@
         {% block content %}{% endblock %}
 
         <div class="full-overlay" id="pause-screen">
-            <div class="background">
-                <img class="papertexture" src="static/media/paper-texture.jpeg" alt="Background Placeholder" />
-                <div id="overlay"></div>
-            </div>
+            {% include 'background.html' %}
             <div id="main-pause">
                 <div id="pause-title">Pause</div>
                 <button onclick="pauseOff()" class=basic-button>RESUME</button>
@@ -46,12 +39,9 @@
         </div>
 
         <div class="full-overlay" id="game-over-screen">
-            <div class="background">
-                <img class="papertexture" src="static/media/paper-texture.jpeg" alt="Background Placeholder" />
-                <div id="overlay"></div>
-            </div>
-            <div id="main-pause">
-                <div id="pause-title">Game Over!</div>
+            {% include 'background.html' %}
+            <div id="main-gameover">
+                <div id="gameover-title">Game Over!</div>
                 <div id="score-info"></div>
                 <button onclick="location.reload()" class=basic-button>REPLAY</button>
                 <button onclick="toMenu()" class=basic-button>MENU</button>
@@ -59,10 +49,7 @@
         </div>
 
         <div class="full-overlay" id="result-screen">
-            <div class="background">
-                <img class="papertexture" src="static/media/paper-texture.jpeg" alt="Background Placeholder" />
-                <div id="overlay"></div>
-            </div>
+            {% include 'background.html' %}
             <div id="main-result">
                 <div id="pause-div">
                     <button onclick="pauseOn()" class="pause-button" id="pause-arcade">

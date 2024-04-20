@@ -9,10 +9,7 @@
 
 <body>
     <main>
-        <div class="background">
-            <img class="papertexture" src="static/media/paper-texture.jpeg" alt="Background Placeholder" />
-            <div id="overlay"></div>
-        </div>
+        {% include 'background.html' %}
         <div id="footerheader">
             <div id="upperpart">
                 <a href="{{ url_for('howtoplay') }}" id="how-to-play">HOW TO PLAY?</a>
