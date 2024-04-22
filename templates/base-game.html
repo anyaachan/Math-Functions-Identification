@@ -14,9 +14,6 @@
         MathJax.Hub.Config({
           messageStyle: "none"
         });
-
-        MathJax.Hub.Queue(function ()
-        {document.body.style.visbility="visible"});
         var math = document.getElementById("arcade-equation");
         MathJax.Hub.Queue(["Typeset",MathJax.Hub,math]);
     </script>

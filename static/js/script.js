@@ -222,6 +222,7 @@ function startStopwatch(stopwatch) {
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
+    let randomEquation = getRandomEquation();
 
     if (window.location.pathname == "/arcade") {
         startTimer(duration);
@@ -232,7 +233,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         startStopwatch(stopwatch);
     }
 
-    let randomEquation = getRandomEquation();
+    if (window, location.pathname == "/mentor") {
+        getWolframLink(randomEquation);
+    }
 
     // Reference to the canvas and div element
     const canvas = document.getElementById('canvas-drawing');
@@ -361,8 +364,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             .then(data => {  // Process the response data, eg showing the result to the user
                 console.log('Success:', data);
                 resultOn(checkEquation(data, functions, randomEquation));
-
-                getWolframLink(randomEquation);
 
                 encoded_answer = data.correct_function
                 document.getElementById("image-answer").src = encoded_answer;

@@ -383,8 +383,21 @@ background-clip: text;
 #mentor-resources {
     margin: 0rem;
     padding: 0rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
+#resources-title {
+    font-size: 3.7rem;
+    margin: 0;
+}
+
+#wolfram { 
+    color: #B70000;
+    font-size: 2.5rem;
+    text-decoration: underline;
+}
 .half-block {
     margin: 0rem;
     font-size: 5rem;
@@ -427,9 +440,14 @@ background-clip: text;
     top: -10rem;
 }
 
+#pause img:hover {
+    scale:1.1;
+}
+
 .pause-button img {
     width: 5rem;
     height: 5rem;
+    transition: 0.2s;
 }
 
 #pause-title, #gameover-title {
@@ -568,6 +586,12 @@ background-clip: text;
 @media (max-width: 2500px) {
     html {
         font-size: 16px;
+    }
+}
+
+@media (max-width: 1600px) {
+    html {
+        font-size: 12px;
     }
 }
 
