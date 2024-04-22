@@ -132,9 +132,47 @@ main {
     position: fixed;
     width: 100vw;
     height: 100vh;
-    z-index: -10; /* Changed from -1 to 0 to make sure it's above the base layer */
+    z-index: -10; 
     top: 0;
     left: 0;
+}
+
+.blobs-container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: -5; 
+    top: 0;
+    left: 0;
+}
+
+.blob {
+    position:absolute;
+    transform: scale(0.7) translate(0,0);
+}
+
+#blob1 {
+    top: 0;
+    left: 0;
+    transform-origin: top left;
+}
+
+#blob2 {
+    top: 0;
+    right: 0;
+    transform-origin: top right;
+}
+
+#blob3 {
+    bottom: 0;
+    left: 0;
+    transform-origin: bottom left;
+}
+
+#blob4 {
+    bottom: 0;
+    right: 0;
+    transform-origin: bottom right;
 }
 
 .papertexture {
@@ -378,6 +416,7 @@ background-clip: text;
 .equation-wrapper {
     margin:0rem;
     padding: 0rem;
+    height: 100%;
     /* display: flex; */
     justify-content: center;
     align-items: center;
@@ -409,7 +448,13 @@ background-clip: text;
     color: #B70000;
     font-size: 2.5rem;
     text-decoration: underline;
+    transition: 0.2s;
 }
+
+#wolfram:hover {
+    scale:1.05;
+}
+
 .half-block {
     margin: 0rem;
     font-size: 5rem;

@@ -10,6 +10,12 @@
 <body>
     <main>
         {% include 'background.html' %}
+        <div class = "blobs-container">
+            <img class = "blob" id="blob1" src="static/media/blob-left-top.svg">
+            <img class = "blob" id="blob2" src="static/media/blob-right-top.svg">
+            <img class = "blob" id="blob3" src="static/media/blob-left-bottom.svg">
+            <img class = "blob" id="blob4" src="static/media/blob-right-bottom.svg">
+        </div>
         <div id="footerheader">
             <div id="upperpart">
                 <a href="{{ url_for('howtoplay') }}" id="how-to-play">HOW TO PLAY?</a>
