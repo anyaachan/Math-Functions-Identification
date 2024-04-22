@@ -357,7 +357,7 @@ background-clip: text;
     margin: 0;
 }
 
-#arcade-info, #eternal-info {
+#arcade-info, #eternal-info, #mentor-info {
     height: 100%;
     display: grid;
     gap: 2rem;
@@ -377,7 +377,7 @@ background-clip: text;
     font-weight: 700;
 }
 
-#arcade-time, #arcade-lives, #eternal-ratio, #eternal-time{
+.half-block {
     margin: 0rem;
     font-size: 5rem;
     display: flex;
@@ -450,7 +450,7 @@ background-clip: text;
     z-index: 10;
 }
 
-#main-pause, #main-result, #main-gameover {
+.main-overlay {
     width: 100vw; 
     height: 100vh; 
     display: flex;

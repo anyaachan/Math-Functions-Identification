@@ -47,6 +47,10 @@ def howtoplay():
 def arcade():
     return render_template('arcade.html')
 
+@app.route("/mentor")
+def mentor():
+    return render_template('mentor.html')
+
 @app.route("/eternal")
 def eternal():
     return render_template('eternal.html')

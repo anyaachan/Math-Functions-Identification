@@ -38,7 +38,7 @@
 
         <div class="full-overlay" id="pause-screen">
             {% include 'background.html' %}
-            <div id="main-pause">
+            <div id="main-pause" class = "main-overlay">
                 <div id="pause-title">Pause</div>
                 <button onclick="pauseOff()" class=basic-button>RESUME</button>
                 <button onclick="toMenu()" class=basic-button>QUIT GAME</button>
@@ -47,7 +47,7 @@
 
         <div class="full-overlay" id="game-over-screen">
             {% include 'background.html' %}
-            <div id="main-gameover">
+            <div id="main-gameover" class = "main-overlay">
                 <div id="gameover-title">Game Over!</div>
                 <div id="score-info"></div>
                 <button onclick="location.reload()" class=basic-button>REPLAY</button>
@@ -57,7 +57,7 @@
 
         <div class="full-overlay" id="result-screen">
             {% include 'background.html' %}
-            <div id="main-result">
+            <div id="main-result" class = "main-overlay">
                 <div id="pause-div">
                     <button onclick="pauseOn()" class="pause-button" id="pause-arcade">
                         <img src="static/media/pause.svg" alt="Pause">
