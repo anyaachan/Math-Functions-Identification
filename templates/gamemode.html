@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>SketchMath</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" type="image/x-icon" href="static/media/favicon.png">
 </head>
 
 <body>
@@ -16,23 +17,44 @@
     <header id="header"></header>
 
     <main id="main-gamemode">
-        <a id="card-eternal" class="card" href="{{ url_for('eternal') }}">
-            <h1>ETERNAL</h1>
-            <p>Infinite Game with feedback, No Hints or Links</p>
-            <p>Train and Perfect!</p>
-        </a>
+        <div id="eternal" class="gamemode-wrapper">
+            <img class="eternal-icon" id="eternal-icon-01" src="static/media/eternal-icon.svg" />
+            <img class="eternal-icon" id="eternal-icon-02" src="static/media/eternal-icon.svg" />
+            <img class="eternal-icon" id="eternal-icon-03" src="static/media/eternal-icon.svg" />
+            <a class="card card-gamemode" href="{{ url_for('eternal') }}">
+                <h1 id="eternal-gamemode-title">ETERNAL</h1>
+                <div class="gamemode-description">
+                    <p>Infinite Game with feedback, No Hints or Links</p>
+                    <p>Train and Perfect!</p>
+                </div>
+            </a>
+        </div>
 
-        <a id="card-arcade" class="card" href="{{ url_for('arcade') }}">
-            <h1>ARCADE</h1>
-            <p>Limited Time and Lives</p>
-            <p>Test Your Knowledge Under Stress!</p>
-        </a>
+        <div id="arcade" class="gamemode-wrapper">
+            <img class="arcade-icon" id="arcade-icon-01" src="static/media/heart-filled.svg" />
+            <img class="arcade-icon" id="arcade-icon-02" src="static/media/heart-filled.svg" />
+            <img class="arcade-icon" id="arcade-icon-03" src="static/media/heart-empty.svg" />
+            <a class="card card-gamemode" href="{{ url_for('arcade') }}">
+                <h1 id="arcade-gamemode-title">ARCADE</h1>
+                <div class="gamemode-description">
+                    <p>Limited Time and Lives</p>
+                    <p>Test Your Knowledge Under Stress!</p>
+                </div>
+            </a>
+        </div>
 
-        <a id="card-mentor" class="card" href="{{ url_for('mentor') }}">
-            <h1>MENTOR</h1>
-            <p>Useful Resources and Feedback</p>
-            <p>Read, Remember and Improve!</p>
-        </a>
+        <div id="mentor" class="gamemode-wrapper">
+            <img class="mentor-icon" id="mentor-icon-01" src="static/media/mentor-icon.svg" />
+            <img class="mentor-icon" id="mentor-icon-02" src="static/media/mentor-icon.svg" />
+            <img class="mentor-icon" id="mentor-icon-03" src="static/media/mentor-icon.svg" />
+            <a class="card card-gamemode" href="{{ url_for('mentor') }}">
+                <h1 id="mentor-gamemode-title">MENTOR</h1>
+                <div class="gamemode-description">
+                    <p>Useful Resources and Feedback</p>
+                    <p>Read, Remember and Improve!</p>
+                </div>
+            </a>
+        </div>
     </main>
 </body>
 

@@ -233,8 +233,80 @@ main {
     align-items: stretch;
     /* Aligns items to the start of the cross axis */
     margin: 0 2rem 0 2rem;
-    height: calc(100vh - 4rem);
+    height: calc(100vh - 2rem);
     /* Full heright minus margin */
+}
+
+.gamemode-wrapper {
+    justify-content: stretch;
+    text-align: center;
+    display: grid;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.eternal-icon {
+    position: absolute;
+    scale: 0.65;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#eternal-icon-01 {
+    transform: translate(0, 0) translateX(20rem) translateY(6rem);
+}
+
+#eternal-icon-02 {
+    bottom: 0;
+    transform: translate(0, 0) rotate(50deg) translateX(-12rem) translateY(-4rem);
+}
+
+#eternal-icon-03 {
+    bottom: 8rem;
+    scale: 0.55;
+    transform: rotate(-20deg) translateX(25rem) translateY(14rem);
+}
+
+.arcade-icon {
+    position: absolute;
+    scale: 0.65;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#arcade-icon-01 {
+    transform: translate(0, 0) translateX(35rem) translateY(6rem) rotate(20deg) scale(0.9);
+}
+
+#arcade-icon-02 {
+    bottom: 0;
+    transform: translate(0, 0) translateX(-1rem) translateY(-7rem) rotate(-20deg) scale(1.2);
+}
+
+#arcade-icon-03 {
+    bottom: 0;
+    transform: translate(0, 0) translateX(40rem) translateY(-7rem) rotate(45deg) scale(1.2);
+}
+
+.mentor-icon {
+    position: absolute;
+    scale: 0.8;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#mentor-icon-01 {
+    transform: translate(0, 0) translateX(26rem) translateY(4rem) scale(0.7);
+}
+
+#mentor-icon-02 {
+    bottom: 0;
+    transform: translate(0, 0) translateX(26rem) translateY(-6rem) rotate(45deg);
+}
+
+#mentor-icon-03 {
+    transform: translate(0, 0) translateX(0rem) translateY(4rem) rotate(20deg);
 }
 
 .card {
@@ -256,16 +328,10 @@ main {
     height: auto;
 }
 
-#card-eternal:hover {
+.card-gamemode:hover {
     scale: 1.05;
-}
-
-#card-arcade:hover {
-    scale: 1.05;
-}
-
-#card-mentor:hover {
-    scale: 1.05;
+    grid-column: 1;
+    grid-row: 1;
 }
 
 .card h1 {
@@ -276,22 +342,28 @@ main {
     /* Adjust this value to move the title closer to the card's top */
 }
 
+.gamemode-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: space-between;
+    height: 100%;
+    margin-bottom: 3rem;
+}
+
 .card p {
     font-size: 2.8rem;
     font-family: 'Rubik', sans-serif;
     font-weight: 800;
     color: #161616;
     margin: 0rem 1rem;
-    /* Provides a consistent margin */
-    flex-grow: 1;
-    /* Allows paragraphs to expand and fill the space */
 }
 
 .card h1 {
     letter-spacing: 0.04em;
 }
 
-#card-arcade h1,
+#arcade-gamemode-title,
 #arcade-title {
     background: linear-gradient(90deg, #FF4319 0%, #FFBE00 100%);
     -webkit-background-clip: text;
@@ -299,7 +371,7 @@ main {
     background-clip: text;
 }
 
-#card-eternal h1,
+#eternal-gamemode-title,
 #eternal-title {
     background: linear-gradient(90deg, #B60000 0%, #FF7A00 100%);
     -webkit-background-clip: text;
@@ -307,15 +379,13 @@ main {
     background-clip: text;
 }
 
-#card-mentor h1,
+#mentor-gamemode-title,
 #mentor-title {
     background: linear-gradient(90deg, #FFB800 0%, #ACCA01 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
-
-
 
 #main-howtoplay {
     display: flex;
