@@ -9,9 +9,9 @@ html {
     line-height: 1.5;
 }
 
-.math{
+.math {
     margin: 0;
-  }
+}
 
 body {
     font-family: 'Rubik Mono One', sans-serif;
@@ -26,11 +26,12 @@ a {
 }
 
 
-button { 
+button {
     all: unset;
 }
 
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -57,18 +58,49 @@ main {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
     text-decoration: none;
-    color: rgb(0, 0, 0);
     grid-column: 1;
     grid-row: 1;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
-#upperpart, #bottompart {
+#footerheader>*>* {
+    color: white;
+    font-size: 1.8rem;
+    white-space: pre-wrap;
+    transition: 0.2s;
+}
+
+#footerheader>*>*:hover {
+    scale: 1.05;
+}
+
+#upperpart,
+#bottompart {
     display: flex;
+    width: 100vw;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+#how-to-play {
+    color: white;
+    font-size: 1.8rem;
+    margin-left: 2rem;
+}
+
+#language-selection {
+    margin-right: 2rem;
+}
+
+#by {
+    margin-left: 2rem;
+}
+
+#contact-me {
+    margin-right: 2rem;
 }
 
 #maintitle {
@@ -81,21 +113,21 @@ main {
 }
 
 #titlemath {
-    font-size: 8rem; 
+    font-size: 8rem;
     display: grid;
 }
 
 #titlemath p {
-    text-align: center; 
+    text-align: center;
     font-family: 'Rubik';
-    font-weight: 1000; 
-    letter-spacing: 11.20px; 
+    font-weight: 1000;
+    letter-spacing: 11.20px;
     grid-column: 1;
     grid-row: 1;
 }
 
 #SketchMath {
-    background: linear-gradient(90deg, #FF4319 3%, #FF7A00 36%, #FFBE00 68%, #9CB700 93%); 
+    background: linear-gradient(90deg, #FF4319 3%, #FF7A00 36%, #FFBE00 68%, #9CB700 93%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -103,14 +135,14 @@ main {
     z-index: 1;
     filter: drop-shadow(-0rem 0.5rem 0px #B70000);
 
-    
+
 }
 
 #play-button {
     text-decoration: none;
     border: none;
     background-color: inherit;
-    font-size: 4rem; 
+    font-size: 4rem;
     font-family: 'Rubik Mono One';
     background: linear-gradient(90deg, #FF3D00 0%, #FF7A00 22.5%, #F6CE00 50%, #00DB8C 75%, #0038FF 100%);
     -webkit-background-clip: text;
@@ -132,23 +164,24 @@ main {
     position: fixed;
     width: 100vw;
     height: 100vh;
-    z-index: -10; 
+    z-index: -10;
     top: 0;
     left: 0;
 }
 
 .blobs-container {
+    overflow: hidden;
     position: fixed;
     width: 100vw;
     height: 100vh;
-    z-index: -5; 
+    z-index: -5;
     top: 0;
     left: 0;
 }
 
 .blob {
-    position:absolute;
-    transform: scale(0.7) translate(0,0);
+    position: absolute;
+    transform: scale(0.7) translate(0, 0);
 }
 
 #blob1 {
@@ -177,10 +210,10 @@ main {
 
 .papertexture {
     opacity: 0.6;
-    width: 100%; 
+    width: 100%;
     position: absolute;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover;
 }
 
 #overlay {
@@ -189,7 +222,7 @@ main {
     height: 100%;
     background: #FFF6ED;
     mix-blend-mode: multiply;
-    z-index: 1; 
+    z-index: 1;
 }
 
 
@@ -197,14 +230,16 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: stretch; /* Aligns items to the start of the cross axis */
+    align-items: stretch;
+    /* Aligns items to the start of the cross axis */
     margin: 0 2rem 0 2rem;
-    height: calc(100vh - 4rem); /* Full heright minus margin */
+    height: calc(100vh - 4rem);
+    /* Full heright minus margin */
 }
 
 .card {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     margin: 8rem 1.2rem;
     background: linear-gradient(203deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.20) 100%);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.20);
@@ -212,28 +247,33 @@ main {
     border: 0.15rem solid rgba(255, 255, 255, 0.60);
     backdrop-filter: blur(0.5rem);
     text-align: center;
-    justify-content: stretch; /* This spaces out the child elements */
-    flex: 1; /* Takes up equal width */
-    overflow: hidden; 
+    justify-content: stretch;
+    /* This spaces out the child elements */
+    flex: 1;
+    /* Takes up equal width */
+    overflow: hidden;
     transition: .2s;
-    height: auto; 
+    height: auto;
 }
 
 #card-eternal:hover {
-    scale:1.05;
+    scale: 1.05;
 }
+
 #card-arcade:hover {
-    scale:1.05;
+    scale: 1.05;
 }
+
 #card-mentor:hover {
-    scale:1.05;
+    scale: 1.05;
 }
 
 .card h1 {
     font-size: 4.5rem;
     font-family: 'Rubik Mono One', sans-serif;
     color: #161616;
-    margin-top: 3rem; /* Adjust this value to move the title closer to the card's top */
+    margin-top: 3rem;
+    /* Adjust this value to move the title closer to the card's top */
 }
 
 .card p {
@@ -241,50 +281,59 @@ main {
     font-family: 'Rubik', sans-serif;
     font-weight: 800;
     color: #161616;
-    margin: 0rem 1rem; /* Provides a consistent margin */
-    flex-grow: 1; /* Allows paragraphs to expand and fill the space */
+    margin: 0rem 1rem;
+    /* Provides a consistent margin */
+    flex-grow: 1;
+    /* Allows paragraphs to expand and fill the space */
 }
 
 .card h1 {
     letter-spacing: 0.04em;
 }
 
-#card-arcade h1, #arcade-title{
+#card-arcade h1,
+#arcade-title {
     background: linear-gradient(90deg, #FF4319 0%, #FFBE00 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
-#card-eternal h1, #eternal-title{
-background: linear-gradient(90deg, #B60000 0%, #FF7A00 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
+#card-eternal h1,
+#eternal-title {
+    background: linear-gradient(90deg, #B60000 0%, #FF7A00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-#card-mentor h1, #mentor-title{
-background: linear-gradient(90deg, #FFB800 0%, #ACCA01 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
+#card-mentor h1,
+#mentor-title {
+    background: linear-gradient(90deg, #FFB800 0%, #ACCA01 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 
 
-#main-howtoplay { 
+#main-howtoplay {
     display: flex;
     flex-direction: column;
-    justify-content: stretch; /* Centers the content vertically */
-    align-items: center; /* Centers the content horizontally */
+    justify-content: stretch;
+    /* Centers the content vertically */
+    align-items: center;
+    /* Centers the content horizontally */
     width: 100vw;
     height: 100vh;
-    text-align: center; /* Ensures text is centered within its container */
+    text-align: center;
+    /* Ensures text is centered within its container */
 }
+
 /* How To Play? */
 
 
-#title-howtoplay { 
+#title-howtoplay {
     font-size: 8rem;
     letter-spacing: 0.08em;
     background: linear-gradient(90deg, #FFBE00 0%, #FF4319 100%);
@@ -293,19 +342,24 @@ background-clip: text;
     background-clip: text;
     font-family: 'Rubik', sans-serif;
     font-weight: 800;
-    margin-bottom: 1rem; /* Adds space below the title */
+    margin-bottom: 1rem;
+    /* Adds space below the title */
 }
 
 #tutorial {
     position: relative;
     margin: 3rem;
-    overflow: hidden; /* Ensures nothing spills outside the bounds */
+    overflow: hidden;
+    /* Ensures nothing spills outside the bounds */
 }
 
 #tutorial-image {
-    max-width: 100%; /* Ensures image is not larger than its container */
-    max-height: 100%; /* Ensures image is not taller than its container */
-    object-fit: contain; /* Ensures the image is fully visible */
+    max-width: 100%;
+    /* Ensures image is not larger than its container */
+    max-height: 100%;
+    /* Ensures image is not taller than its container */
+    object-fit: contain;
+    /* Ensures the image is fully visible */
 }
 
 #main-game {
@@ -318,15 +372,17 @@ background-clip: text;
 }
 
 .card-space {
-    width: 100%; /* Adjust based on your design */
+    width: 100%;
+    /* Adjust based on your design */
     height: 70%;
     display: flex;
     /* flex: 0 0 0; */
-    flex-direction: row;   
+    flex-direction: row;
     /* object-fit: contain; */
 }
 
-#graph-drawing, #graph-result {
+#graph-drawing,
+#graph-result {
     margin: 0rem 1rem 0rem 2rem;
     position: relative;
     display: flex;
@@ -340,7 +396,8 @@ background-clip: text;
     width: 100%;
 }
 
-.y-axis, .x-axis {
+.y-axis,
+.x-axis {
     position: absolute;
     background-color: black;
     border-radius: 1em;
@@ -350,24 +407,31 @@ background-clip: text;
 
 .y-axis {
     left: 50%;
-    bottom: 1em; 
-    width: 0.4em; 
-    height: calc(100% - 2em); 
+    bottom: 1em;
+    width: 0.4em;
+    height: calc(100% - 2em);
 }
 
 .x-axis {
     bottom: 50%;
-    left: 1em; /* Margin from the left */
-    height:  0.4em; /* Thickness of the line */
-    width: calc(100% - 2em); /* Adjust width for margins */
+    left: 1em;
+    /* Margin from the left */
+    height: 0.4em;
+    /* Thickness of the line */
+    width: calc(100% - 2em);
+    /* Adjust width for margins */
 }
+
 .y-axis::before {
     /* Arrow for the Y-axis */
     content: '';
     position: absolute;
-    left: calc(50% - 0.75rem); /* Adjust to center the arrow horizontally */
-    top: 1rem; /* Position the arrow at the top */
-    transform: translateY(-100%); /* Move the arrow up by its own height */
+    left: calc(50% - 0.75rem);
+    /* Adjust to center the arrow horizontally */
+    top: 1rem;
+    /* Position the arrow at the top */
+    transform: translateY(-100%);
+    /* Move the arrow up by its own height */
     border-left: 0.8rem solid transparent;
     border-right: 0.8rem solid transparent;
     border-bottom: 1.6rem solid black;
@@ -377,12 +441,16 @@ background-clip: text;
     /* Arrow for the X-axis */
     content: '';
     position: absolute;
-    right: 1rem; /* Position the arrow at the right */
-    bottom: calc(50% - 0.8rem); /* Adjust to center the arrow vertically */
-    transform: translateX(100%); /* Move the arrow right by its own width */
+    right: 1rem;
+    /* Position the arrow at the right */
+    bottom: calc(50% - 0.8rem);
+    /* Adjust to center the arrow vertically */
+    transform: translateX(100%);
+    /* Move the arrow right by its own width */
     border-top: 0.8rem solid transparent;
     border-bottom: 0.8rem solid transparent;
-    border-left: 1.6rem solid black; /* Change border-right to border-left */
+    border-left: 1.6rem solid black;
+    /* Change border-right to border-left */
 }
 
 .elements {
@@ -393,20 +461,25 @@ background-clip: text;
     flex-basis: 100%;
 }
 
-#arcade-time-lives, #eternal-ratio-time {
+#arcade-time-lives,
+#eternal-ratio-time {
     height: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    
+
 }
 
-#arcade-title, #eternal-title, #mentor-title {
+#arcade-title,
+#eternal-title,
+#mentor-title {
     font-size: 4rem;
     margin: 0;
 }
 
-#arcade-info, #eternal-info, #mentor-info {
+#arcade-info,
+#eternal-info,
+#mentor-info {
     height: 100%;
     display: grid;
     gap: 2rem;
@@ -414,7 +487,7 @@ background-clip: text;
 }
 
 .equation-wrapper {
-    margin:0rem;
+    margin: 0rem;
     padding: 0rem;
     height: 100%;
     /* display: flex; */
@@ -444,7 +517,7 @@ background-clip: text;
     margin: 0;
 }
 
-#wolfram { 
+#wolfram {
     color: #B70000;
     font-size: 2.5rem;
     text-decoration: underline;
@@ -452,7 +525,7 @@ background-clip: text;
 }
 
 #wolfram:hover {
-    scale:1.05;
+    scale: 1.05;
 }
 
 .half-block {
@@ -465,7 +538,7 @@ background-clip: text;
     align-content: center;
 }
 
-#arcade-lives{
+#arcade-lives {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0.5rem;
@@ -480,9 +553,12 @@ background-clip: text;
 }
 
 .line-vertical {
-    position: relative; /* new */
-    width: 2rem; /* line-width */
-    height: 10rem; /* line length */
+    position: relative;
+    /* new */
+    width: 2rem;
+    /* line-width */
+    height: 10rem;
+    /* line length */
     z-index: 10;
     background: #000000;
 }
@@ -498,7 +574,7 @@ background-clip: text;
 }
 
 #pause img:hover {
-    scale:1.1;
+    scale: 1.1;
 }
 
 .pause-button img {
@@ -507,7 +583,8 @@ background-clip: text;
     transition: 0.2s;
 }
 
-#pause-title, #gameover-title {
+#pause-title,
+#gameover-title {
     font-size: 10rem;
     margin-bottom: 3rem;
     display: flex;
@@ -521,11 +598,11 @@ background-clip: text;
     background-clip: text;
 }
 
-.full-overlay{
-    position:fixed;
+.full-overlay {
+    position: fixed;
     display: none;
-    width: 100%; 
-    height: 100%; 
+    width: 100%;
+    height: 100%;
     top: 0;
     left: 0;
     right: 0;
@@ -534,15 +611,15 @@ background-clip: text;
 }
 
 .main-overlay {
-    width: 100vw; 
-    height: 100vh; 
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-#result-elements { 
+#result-elements {
     margin: 0rem 2rem 0rem 1rem;
     height: 100%;
     display: flex;
@@ -557,7 +634,8 @@ background-clip: text;
     text-align: center;
 }
 
-#correct, #incorrect { 
+#correct,
+#incorrect {
     grid-row: 1;
     grid-column: 1;
 
@@ -573,7 +651,7 @@ background-clip: text;
     align-items: center;
     text-align: center;
     letter-spacing: 0.08rem;
-    
+
     filter: drop-shadow(-0.3rem 0.3rem 0px #B70000);
 
     background: linear-gradient(90deg, #FFBE00 0%, #FF3D00 100%);
@@ -585,10 +663,10 @@ background-clip: text;
 }
 
 .basic-button:hover {
-    scale:1.05;
+    scale: 1.05;
 }
 
-.result { 
+.result {
     display: none;
     font-size: 6rem;
 }
@@ -612,17 +690,17 @@ background-clip: text;
     width: 100%;
 }
 
-#image-user-drawing { 
+#image-user-drawing {
     z-index: 5;
     opacity: 0.5;
 }
 
-#image-answer { 
+#image-answer {
     z-index: 10;
 }
 
 #correct {
-    color:  #32CD32;
+    color: #32CD32;
 }
 
 #incorrect {

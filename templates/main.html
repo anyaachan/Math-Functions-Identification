@@ -10,20 +10,21 @@
 <body>
     <main>
         {% include 'background.html' %}
-        <div class = "blobs-container">
-            <img class = "blob" id="blob1" src="static/media/blob-left-top.svg">
-            <img class = "blob" id="blob2" src="static/media/blob-right-top.svg">
-            <img class = "blob" id="blob3" src="static/media/blob-left-bottom.svg">
-            <img class = "blob" id="blob4" src="static/media/blob-right-bottom.svg">
+        <div class="blobs-container">
+            <img class="blob" id="blob1" src="static/media/blob-left-top.svg">
+            <img class="blob" id="blob2" src="static/media/blob-right-top.svg">
+            <img class="blob" id="blob3" src="static/media/blob-left-bottom.svg">
+            <img class="blob" id="blob4" src="static/media/blob-right-bottom.svg">
         </div>
+
         <div id="footerheader">
             <div id="upperpart">
                 <a href="{{ url_for('howtoplay') }}" id="how-to-play">HOW TO PLAY?</a>
                 <div id="language-selection">EN</div>
             </div>
             <div id="bottompart">
-                <div id="by">BY ANNA DANCHENKO</div>
-                <a href="#" id="contact-me">CONTACT ME</a>
+                <a id="by" href="https://github.com/anyaachan">BY ANNA DANCHENKO</a>
+                <a href="https://t.me/anyaachan" id="contact-me">CONTACT ME</a>
             </div>
         </div>
         <div id="maintitle">
