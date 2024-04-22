@@ -164,6 +164,12 @@ function checkEquation(userJson, functions, equation) {
     return result;
 }
 
+function getWolframLink(equation) {
+    let wolframUrl = "https://www.wolframalpha.com/input/?i=" + encodeURIComponent(equation);
+    let wolframDiv = document.getElementById("wolfram");
+    wolframDiv.href = wolframUrl;
+}
+
 function startTimer(duration) {
     let timer = duration;
     var seconds;
@@ -355,6 +361,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
             .then(data => {  // Process the response data, eg showing the result to the user
                 console.log('Success:', data);
                 resultOn(checkEquation(data, functions, randomEquation));
+
+                getWolframLink(randomEquation);
 
                 encoded_answer = data.correct_function
                 document.getElementById("image-answer").src = encoded_answer;

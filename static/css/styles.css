@@ -9,6 +9,10 @@ html {
     line-height: 1.5;
 }
 
+.mjx-chtml.MJXc-display{
+    margin: 0;
+  }
+
 body {
     font-family: 'Rubik Mono One', sans-serif;
     background-size: cover;
@@ -220,7 +224,7 @@ background: linear-gradient(90deg, #B60000 0%, #FF7A00 100%);
 background-clip: text;
 }
 
-#card-mentor h1{
+#card-mentor h1, #mentor-title{
 background: linear-gradient(90deg, #FFB800 0%, #ACCA01 100%);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
@@ -352,7 +356,7 @@ background-clip: text;
     
 }
 
-#arcade-title, #eternal-title {
+#arcade-title, #eternal-title, #mentor-title {
     font-size: 4rem;
     margin: 0;
 }
@@ -361,20 +365,24 @@ background-clip: text;
     height: 100%;
     display: grid;
     gap: 2rem;
-    height: auto;
     grid-template-rows: 1fr 2fr;
 }
 
 .equation {
-    height:auto;
+    height:100%;
     margin:0rem;
     padding: 0rem;
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
-    font-size: 6.5em;
+    font-size: 4em;
     font-family: 'Rubik', sans-serif;
     font-weight: 700;
+}
+
+#mentor-resources {
+    margin: 0rem;
+    padding: 0rem;
 }
 
 .half-block {
@@ -544,6 +552,10 @@ background-clip: text;
 
 #incorrect {
     color: red;
+}
+
+#mentor-resources {
+    height: 100%;
 }
 
 
