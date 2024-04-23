@@ -9,9 +9,10 @@
 </head>
 
 <body>
-    <div class="background">
-        <img class="papertexture" src="static/media/paper-texture.jpeg" alt="Background Placeholder" />
-        <div id="overlay"></div>
+    {% include 'background.html' %}
+
+    <div class="back-arrow">
+        <img src="static/media/back-arrow.svg" alt="Back Arrow" onclick="window.history.back()">
     </div>
 
     <header id="header"></header>

@@ -140,6 +140,19 @@ main {
 
 }
 
+.back-arrow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 1rem;
+    transform: scale(0.6);
+    transition: 0.2s;
+}
+
+.back-arrow:hover {
+    scale: 1.1;
+}
+
 #play-button {
     transform: scale(0.8);
     transition: 0.2s;
@@ -317,9 +330,7 @@ main {
     backdrop-filter: blur(0.5rem);
     text-align: center;
     justify-content: stretch;
-    /* This spaces out the child elements */
     flex: 1;
-    /* Takes up equal width */
     overflow: hidden;
     transition: .2s;
     height: auto;
@@ -336,7 +347,6 @@ main {
     font-family: 'Rubik Mono One', sans-serif;
     color: #161616;
     margin-top: 3rem;
-    /* Adjust this value to move the title closer to the card's top */
 }
 
 .gamemode-description {
@@ -388,20 +398,14 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: stretch;
-    /* Centers the content vertically */
     align-items: center;
-    /* Centers the content horizontally */
     width: 100vw;
     height: 100vh;
     text-align: center;
-    /* Ensures text is centered within its container */
 }
 
-/* How To Play? */
-
-
 #title-howtoplay {
-    font-size: 8rem;
+    font-size: 7.5rem;
     letter-spacing: 0.08em;
     background: linear-gradient(90deg, #FFBE00 0%, #FF4319 100%);
     -webkit-background-clip: text;
@@ -409,24 +413,22 @@ main {
     background-clip: text;
     font-family: 'Rubik', sans-serif;
     font-weight: 800;
-    margin-bottom: 1rem;
-    /* Adds space below the title */
+    margin-bottom: 0rem;
+    margin-top: 3rem;
 }
 
 #tutorial {
     position: relative;
     margin: 3rem;
+    width: 82%;
+    height: 82%;
     overflow: hidden;
-    /* Ensures nothing spills outside the bounds */
 }
 
 #tutorial-image {
     max-width: 100%;
-    /* Ensures image is not larger than its container */
     max-height: 100%;
-    /* Ensures image is not taller than its container */
     object-fit: contain;
-    /* Ensures the image is fully visible */
 }
 
 #main-game {
