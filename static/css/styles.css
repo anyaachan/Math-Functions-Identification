@@ -115,15 +115,17 @@ main {
 #titlemath {
     font-size: 8rem;
     display: grid;
+    transform: translateY(2rem);
 }
 
 #titlemath p {
     text-align: center;
     font-family: 'Rubik';
     font-weight: 1000;
-    letter-spacing: 11.20px;
+    letter-spacing: 1.4rem;
     grid-column: 1;
     grid-row: 1;
+    margin: 0;
 }
 
 #SketchMath {
@@ -139,17 +141,12 @@ main {
 }
 
 #play-button {
-    text-decoration: none;
-    border: none;
-    background-color: inherit;
-    font-size: 4rem;
-    font-family: 'Rubik Mono One';
-    background: linear-gradient(90deg, #FF3D00 0%, #FF7A00 22.5%, #F6CE00 50%, #00DB8C 75%, #0038FF 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: drop-shadow(-3px 4px 0px #B70000);
+    transform: scale(0.8);
+    transition: 0.2s;
+}
 
+#play-button:hover {
+    scale: 1.1;
 }
 
 #titleshadow {
