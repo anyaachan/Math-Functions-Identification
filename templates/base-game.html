@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>SketchMath</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <link rel="icon" type="image/x-icon" href = "static/media/favicon.png">
+    <link rel="icon" type="image/x-icon" href="static/media/favicon.png">
 </head>
 
 <body>
@@ -29,12 +29,17 @@
         </div>
 
         <div class="card-space">
-            <div id="graph-drawing" class="card">
-                <div class="y-axis"></div>
-                <div class="x-axis"></div>
-                <canvas id="canvas-drawing" width="2048" height="2048"></canvas>
+            <div class="graph-space">
+                <div id="graph-drawing" class="card">
+                    <div class="y-axis"></div>
+                    <div class="x-axis"></div>
+                    <canvas id="canvas-drawing" width="2048" height="2048"></canvas>
+                </div>
             </div>
             {% block content %}{% endblock %}
+            <div class="card equation-wrapper">
+                <div class="equation"></div>
+            </div>
         </div>
 
         <div class="full-overlay" id="pause-screen">
@@ -64,23 +69,23 @@
                         <img src="static/media/pause.svg" alt="Pause">
                     </button>
                 </div>
-                <div id="card-space-result" class="card-space">
-                    <div id="graph-result" class="card">
-                        <div class="y-axis"></div>
-                        <div class="x-axis"></div>
-                        <div id="canvas-result">
-                            <img id="image-user-drawing">
-                            <img id="image-answer">
+                <div id="card-space-result" class="card-space-result">
+                    <div class="graph-space">
+                        <div id="graph-result" class="card">
+                            <div class="y-axis"></div>
+                            <div class="x-axis"></div>
+                            <div id="canvas-result">
+                                <img id="image-user-drawing">
+                                <img id="image-answer">
+                            </div>
                         </div>
                     </div>
-                    <div id="result-elements" class="elements">
-                        <div id="result-title">
-                            <div id="correct" class="result">CORRECT</div>
-                            <div id="incorrect" class="result">INCORRECT</div>
-                        </div>
-                        <div id="wolfram" class="resources">WOLFRAM ALPHA</div>
-                        <button onclick="resultOff()" class=basic-button>RESUME</button>
+                    <div id="result-title" class="game-title">
+                        <div id="correct" class="result">CORRECT</div>
+                        <div id="incorrect" class="result">INCORRECT</div>
                     </div>
+                    <div id="wolfram" class="resources">WOLFRAM ALPHA</div>
+                    <button onclick="resultOff()" class=basic-button id="resume-button">RESUME</button>
                 </div>
             </div>
         </div>

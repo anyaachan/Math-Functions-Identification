@@ -67,7 +67,10 @@ function heartsDisplay(heartsCount) {
 function resultOn(result) {
     document.getElementById('result-screen').style.display = 'block';
     clearInterval(intervalID);
-
+    duration -= 1;
+    if (window.location.pathname == "/arcade") {
+        document.getElementById('arcade-time').textContent = "00:" + duration;
+    }
     if (result == true) {
         document.getElementById('correct').style.display = 'block';
 
@@ -102,10 +105,10 @@ function resultOn(result) {
 }
 
 function resultOff() {
+    continueTimer();
     document.getElementById('result-screen').style.display = 'none';
     document.getElementById('correct').style.display = 'none';
     document.getElementById('incorrect').style.display = 'none';
-    continueTimer()
 }
 
 function toMenu() {
@@ -122,7 +125,8 @@ let functions = {
     "square_root": "sqrt(x)",
     "negative_square_root": "-sqrt(x)",
     "exponential": "e^x",
-    "logarithmic": "log(x)"
+    "logarithmic": "log(x)",
+    "square_negative_root": "sqrt(-x)"
 }
 
 let functionsToLatex = {
@@ -134,6 +138,7 @@ let functionsToLatex = {
     "-x^3": "-x^3",
     "sqrt(x)": "\\sqrt(x)",
     "-sqrt(x)": "-\\sqrt(x)",
+    "sqrt(-x)": "\\sqrt(-x)",
     "e^x": "e^x",
     "log(x)": "\log_{e}(x)"
 }
@@ -179,7 +184,7 @@ function startTimer(duration) {
         if (seconds < 10) {
             seconds = "0" + seconds;
         }
-
+        
         document.getElementById("arcade-time").textContent = "00:" + seconds;
 
         timer = timer - 1;
