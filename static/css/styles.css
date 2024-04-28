@@ -68,7 +68,6 @@ main {
 #footerheader>*>* {
     color: white;
     font-size: 1.8rem;
-    white-space: pre-wrap;
     transition: 0.2s;
 }
 
@@ -96,7 +95,19 @@ main {
 }
 
 #by {
+    color: white;
+    font-size: 1.8rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: left; */
+    /* justify-content: left; */
+    margin: 0;
     margin-left: 2rem;
+}
+
+#by>* {
+    margin: 0;
 }
 
 #contact-me {
@@ -181,8 +192,10 @@ main {
 }
 
 .svg-drawing {
-    max-width: 80%; /* Ensures it scales down with the container */
-    max-height: 80%; /* Ensures it scales down with the container */
+    max-width: 80%;
+    /* Ensures it scales down with the container */
+    max-height: 80%;
+    /* Ensures it scales down with the container */
     transform: translate(-8rem, 0rem);
 }
 
@@ -732,7 +745,7 @@ main {
 }
 
 #score-info {
-    font-size: rem;
+    font-size: 5rem;
     margin: 0;
 }
 
