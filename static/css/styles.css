@@ -83,6 +83,10 @@ main {
     align-items: center;
 }
 
+#bottompart {
+    align-items: end;
+}
+
 #how-to-play {
     color: white;
     font-size: 1.8rem;
@@ -90,6 +94,7 @@ main {
 }
 
 #language-selection {
+    cursor: pointer;
     margin-right: 2rem;
 }
 
@@ -114,6 +119,7 @@ main {
 }
 
 #maintitle {
+    gap: 1rem;
     margin: auto;
     grid-column: 1;
     grid-row: 1;
@@ -147,17 +153,18 @@ main {
     word-wrap: break-word;
     z-index: 1;
     filter: drop-shadow(-0rem 0.5rem 0px #B70000);
-
-
 }
 
 .back-arrow {
     position: fixed;
     top: 0;
     left: 0;
-    margin: 1rem;
-    transform: scale(0.6);
+    margin: 2rem;
     transition: 0.2s;
+}
+
+.back-arrow img {
+    width: 8rem;
 }
 
 .back-arrow:hover {
@@ -700,11 +707,12 @@ main {
 /* PAUSE OVERLAY SCREEN  */
 
 #pause-div {
+    position: absolute;
     display: flex;
     width: calc(100% - 6rem);
     margin-top: 0;
     justify-content: flex-end;
-    top: -10rem;
+    top: 3rem;
 }
 
 #pause img:hover {
@@ -850,6 +858,21 @@ main {
     height: 100%;
 }
 
+@media (max-width: 4000px) and (min-width: 3000px) {
+    html {
+        font-size: 20px;
+    }
+    /* .gamemode-wrapper {
+        margin: 0 2rem;
+    } */
+}
+
+@media (max-width: 3000px) and (min-width: 2000px) {
+    html {
+        font-size: 16px;
+    }
+}
+
 @media (max-width: 1150px) and (min-width: 1000px) {
     html {
         font-size: 10px;
@@ -865,6 +888,50 @@ main {
 @media (max-width: 1000px) and (orientation: portrait){
     html {
         font-size: 16px;
+    }   
+
+    #titlemath p {
+        letter-spacing: 0.8rem;
+    }
+
+    #svg-container {
+        display: none;
+    }
+
+    #blob3 {
+        height: 25%;
+    }
+
+    #titlemath {
+        font-size: 7rem;
+        display: grid;
+        transform: translateY(2rem);
+    }    
+
+    #maintitle {
+        gap: 3rem;
+    }
+
+    #play-button {
+        transform: scale(1);
+    }
+
+    #gameover-title, #pause-title {
+        font-size: 8rem;
+    }
+
+    .card-space {
+        width: 80%;
+        height: 80%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 3fr 5fr 5fr;
+        gap: 2rem;
+        grid-template-areas:
+        "title title"
+        "info info"
+        "equation equation"
+        "graph graph";
     }
 
     #body-gamemode {
@@ -899,70 +966,60 @@ main {
 
 }
 
-@media (min-aspect-ratio: 2/3) and (orientation: portrait){
-    html {
-        font-size: 12px;
-    }
-    #body-gamemode {
-        height: 100vh;
-        justify-content: center;
-        align-items: center;
-        top: 0;
-        left: 0;
-        z-index: 100;
-    }
-
-    #main-gamemode {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 70%;
-        margin: auto;
-        margin-top: 4rem;
-        margin-bottom: 4rem;
-        height: calc(100vh - 8rem);
-    }
-
-    .card-gamemode {
-        margin: 2rem 0rem;
-    }
-
-    .eternal-icon, .arcade-icon, .mentor-icon {
-        display: none;
-    }
-}
-
-
-
-
-/* @media (max-width: 4000px) {
-    html {
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 2500px) {
-    html {
-        font-size: 16px;
-    }
-}
-
-@media (max-width: 1600px) {
-    html {
-        font-size: 12px;
-    }
-}
-
-@media (max-width: 1100px) {
+@media (min-aspect-ratio: 3/5) and (orientation: portrait){
     html {
         font-size: 10px;
     }
-}
 
-@media (max-width: 900px) {
-    html {
-        font-size: 8px;
+    #gameover-title, #pause-title {
+        font-size: 8rem;
     }
-} */
+
+    .card-space {
+        width: 50%;
+        height: 90%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 4fr 10fr 5fr;
+        gap: 2rem;
+        grid-template-areas:
+        "title title"
+        "info info"
+        "equation equation"
+        "graph graph";
+    }
+
+    #body-gamemode {
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        left: 0;
+        z-index: 100;
+    }
+
+    #blob3 {
+        height: 35%;
+    }
+
+    #main-gamemode {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 70%;
+        margin: auto;
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+        height: calc(100vh - 8rem);
+    }
+
+    .card-gamemode {
+        margin: 2rem 0rem;
+    }
+
+    .eternal-icon, .arcade-icon, .mentor-icon {
+        display: none;
+    }
+}
