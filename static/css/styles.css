@@ -873,13 +873,13 @@ main {
     }
 }
 
-@media (max-width: 1150px) and (min-width: 1000px) {
+@media (max-width: 1500px) and (min-width: 1000px) {
     html {
         font-size: 10px;
     }
 }
 
-@media (max-width: 1000px) and (orientation: landscape) {
+@media (max-width: 1050px) and (orientation: landscape) {
     html {
         font-size: 8px;
     }
@@ -966,7 +966,13 @@ main {
 
 }
 
-@media (min-aspect-ratio: 3/5) and (orientation: portrait){
+@media (max-width: 900px) {
+    html {
+        font-size: 6px;
+    }
+}
+
+@media (min-aspect-ratio: 7/10) and (orientation: portrait){
     html {
         font-size: 10px;
     }

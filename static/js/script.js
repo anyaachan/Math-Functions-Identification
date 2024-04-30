@@ -266,11 +266,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const scaleX = canvas.width / rect.width;
         const scaleY = canvas.height / rect.height;
 
+        let clientX = e.clientX;
+        let clientY = e.clientY;
+
+        if (e.touches) {
+            clientX = e.touches[0].clientX;
+            clientY = e.touches[0].clientY;
+        }
+
         // Return accurate mouse coordinates even when canvas is resized. 
         return {
             // Scale coordinates
-            x: (e.clientX - rect.left) * scaleX,
-            y: (e.clientY - rect.top) * scaleY
+            x: (clientX - rect.left) * scaleX,
+            y: (clientY - rect.top) * scaleY
         }
     }
 
@@ -286,8 +294,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
 
-    // Initiate drawing when mouse is pressed
-    canvas.onmousedown = (e) => {
+    // Initiate drawing when mouse (or touch) is pressed
+    canvas.onmousedown = canvas.ontouchstart = function(e) {
+        event.preventDefault();  // Prevent scrolling 
         drawing = true;
         ctx.strokeStyle = '#B70000';
 
@@ -300,10 +309,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         ctx.stroke(path);
         lastX = x;
         lastY = y;
+
+        console.log("Drawing started");
     }
 
     // Draw on canvas as the mouse is moved
-    canvas.onmousemove = (e) => {
+    canvas.onmousemove = canvas.ontouchmove = function(e) {
+        event.preventDefault();
+
         // If the mouse is pressed, draw
         if (drawing) {
             const { x, y } = getEventCanvasPosition(e);
@@ -319,7 +332,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             lastX = x;
             lastY = y;
-
         }
     }
 
@@ -391,14 +403,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
     // Stop drawing when mouse is released
-    canvas.onmouseup = () => {
+    canvas.onmouseup = canvas.ontouchend = () => {
         drawing = false;
         sendCanvasToServer();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         path = new Path2D();
     }
 
-    canvas.onmouseleave = (e) => {
+    canvas.onmouseleave = canvas.ontouchcancel = (e) => {
         if (drawing) {
             drawing = false;
 
