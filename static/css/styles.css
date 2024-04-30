@@ -879,9 +879,13 @@ main {
     }
 }
 
-@media (max-width: 1050px) and (orientation: landscape) {
+@media (max-width: 1100px) and (orientation: landscape) {
     html {
         font-size: 8px;
+    }
+
+    .card-space-result {
+        height: 70%;
     }
 }
 
@@ -919,6 +923,23 @@ main {
     #gameover-title, #pause-title {
         font-size: 8rem;
     }
+
+    .card-space-result {
+        width: 80%;
+        height: 80%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        gap: 2rem;
+        flex-direction: row;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        grid-template-areas:
+            "title title"
+            "graph graph"
+            ". ."
+            "button button";
+    }    
 
     .card-space {
         width: 80%;
@@ -980,6 +1001,23 @@ main {
     #gameover-title, #pause-title {
         font-size: 8rem;
     }
+
+    .card-space-result {
+        width: 60%;
+        height: 80%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        gap: 2rem;
+        flex-direction: row;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        grid-template-areas:
+            "title title"
+            "graph graph"
+            ". ."
+            "button button";
+    }    
 
     .card-space {
         width: 50%;
