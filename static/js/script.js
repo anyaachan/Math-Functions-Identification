@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // Initiate drawing when mouse (or touch) is pressed
     canvas.onmousedown = canvas.ontouchstart = function(e) {
-        event.preventDefault();  // Prevent scrolling 
+        e.preventDefault();  // Prevent scrolling 
         drawing = true;
         ctx.strokeStyle = '#B70000';
 
@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // Draw on canvas as the mouse is moved
     canvas.onmousemove = canvas.ontouchmove = function(e) {
-        event.preventDefault();
+        e.preventDefault();
 
         // If the mouse is pressed, draw
         if (drawing) {

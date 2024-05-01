@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
 
 html {
     scroll-behavior: smooth;
@@ -518,8 +518,6 @@ main {
 .graph-space {
     grid-area: graph;
     position: relative;
-    /* width: 100%;
-    height: 100%; */
     display: grid;
     aspect-ratio: 1;
 }
@@ -552,42 +550,56 @@ main {
 .x-axis {
     bottom: 50%;
     left: 1em;
-    /* Margin from the left */
     height: 0.4em;
-    /* Thickness of the line */
-    width: calc(100% - 2em);
-    /* Adjust width for margins */
+    width: calc(100% - 2.2em);
 }
 
+/* Arrow for the Y-axis */
 .y-axis::before {
-    /* Arrow for the Y-axis */
     content: '';
     position: absolute;
     left: calc(50% - 0.75rem);
-    /* Adjust to center the arrow horizontally */
     top: 1rem;
-    /* Position the arrow at the top */
     transform: translateY(-100%);
-    /* Move the arrow up by its own height */
     border-left: 0.8rem solid transparent;
     border-right: 0.8rem solid transparent;
     border-bottom: 1.6rem solid black;
 }
 
+/*Label for the Y-axis */
+.y-axis::after {
+    font-family: "Handlee", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3.5rem;
+    content: 'y';
+    position: absolute;
+    left: calc(50% - 3rem);
+    top: -1rem;
+}
+
+/* Arrow for the X-axis */
 .x-axis::before {
-    /* Arrow for the X-axis */
     content: '';
     position: absolute;
     right: 1rem;
-    /* Position the arrow at the right */
     bottom: calc(50% - 0.8rem);
-    /* Adjust to center the arrow vertically */
     transform: translateX(100%);
-    /* Move the arrow right by its own width */
     border-top: 0.8rem solid transparent;
     border-bottom: 0.8rem solid transparent;
     border-left: 1.6rem solid black;
-    /* Change border-right to border-left */
+}
+
+/* Label for the X-axis */
+.x-axis::after {
+    font-family: "Handlee", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3.5rem;
+    content: 'x';
+    position: absolute;
+    right: 0.5rem;
+    bottom: calc(50% - 5.5rem);
 }
 
 .game-title {
@@ -695,11 +707,8 @@ main {
 
 .line-vertical {
     position: relative;
-    /* new */
     width: 2rem;
-    /* line-width */
     height: 10rem;
-    /* line length */
     z-index: 10;
     background: #000000;
 }
@@ -993,9 +1002,17 @@ main {
     }
 }
 
-@media (min-aspect-ratio: 7/10) and (orientation: portrait){
+@media (min-aspect-ratio: 65/100) and (orientation: portrait){
     html {
         font-size: 10px;
+    }
+
+    #titlemath {
+        font-size: 10rem;
+    }    
+
+    #footerheader > * > * {
+        font-size: 2.3rem;
     }
 
     #gameover-title, #pause-title {
@@ -1020,7 +1037,7 @@ main {
     }    
 
     .card-space {
-        width: 50%;
+        width: 60%;
         height: 90%;
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -1042,9 +1059,19 @@ main {
         z-index: 100;
     }
 
+    #blob1 {
+        height: 20%;
+    }
+
+    #blob2 {
+        height: 25%;
+    }
+
     #blob3 {
         height: 35%;
     }
+
+
 
     #main-gamemode {
         position: relative;
