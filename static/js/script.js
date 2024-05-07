@@ -125,6 +125,7 @@ let functions = {
     "square_root": "sqrt(x)",
     "negative_square_root": "-sqrt(x)",
     "exponential": "e^x",
+    "negative_exponential": "-e^x",
     "logarithmic": "log(x)",
     "square_negative_root": "sqrt(-x)"
 }
@@ -140,6 +141,7 @@ let functionsToLatex = {
     "-sqrt(x)": "-\\sqrt(x)",
     "sqrt(-x)": "\\sqrt(-x)",
     "e^x": "e^x",
+    "-e^x": "-e^x",
     "log(x)": "\log_{e}(x)"
 }
 

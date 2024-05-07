@@ -713,8 +713,6 @@ main {
     background: #000000;
 }
 
-/* PAUSE OVERLAY SCREEN  */
-
 #pause-div {
     position: absolute;
     display: flex;
