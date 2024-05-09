@@ -127,7 +127,8 @@ let functions = {
     "exponential": "e^x",
     "negative_exponential": "-e^x",
     "logarithmic": "log(x)",
-    "square_negative_root": "sqrt(-x)"
+    "square_negative_root": "sqrt(-x)",
+    "absolute_linear": "|x|"
 }
 
 let functionsToLatex = {
@@ -142,7 +143,8 @@ let functionsToLatex = {
     "sqrt(-x)": "\\sqrt(-x)",
     "e^x": "e^x",
     "-e^x": "-e^x",
-    "log(x)": "\log_{e}(x)"
+    "log(x)": "\log_{e}(x)",
+    "|x|": "|x|"
 }
 
 function getKeyByValue(object, value) {
