@@ -1,4 +1,4 @@
-let duration = 20;
+let duration = 10;
 let heartsCount = 3;
 let score = 0;
 
@@ -69,7 +69,11 @@ function resultOn(result) {
     clearInterval(intervalID);
     duration -= 1;
     if (window.location.pathname == "/arcade") {
-        document.getElementById('arcade-time').textContent = "00:" + duration;
+        if (duration < 10) {
+            document.getElementById('arcade-time').textContent = "00:0" + duration;
+        } else {
+            document.getElementById('arcade-time').textContent = "00:" + duration;
+        }
     }
     if (result == true) {
         document.getElementById('correct').style.display = 'block';
@@ -184,18 +188,21 @@ function startTimer(duration) {
     var seconds;
 
     intervalID = setInterval(function () {
+        console.log("Timer:" + timer)
         seconds = parseInt(timer, 10)
         if (seconds < 10) {
-            seconds = "0" + seconds;
+            console.log("LESS THAN 10")
+            document.getElementById("arcade-time").textContent = "00:0" + seconds;
+        } else {
+            document.getElementById("arcade-time").textContent = "00:" + seconds;
         }
         
-        document.getElementById("arcade-time").textContent = "00:" + seconds;
 
         timer = timer - 1;
         if (timer < 0) {
             gameOver();
             timer = duration;
-            var intervalID;
+            clearInterval(intervalID);
         }
 
     }, 1000);
@@ -313,8 +320,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         ctx.stroke(path);
         lastX = x;
         lastY = y;
-
-        console.log("Drawing started");
     }
 
     // Draw on canvas as the mouse is moved
