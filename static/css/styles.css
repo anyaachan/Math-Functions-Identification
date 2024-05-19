@@ -452,18 +452,26 @@ main {
     margin-top: 3rem;
 }
 
+
 #tutorial {
     position: relative;
     margin: 3rem;
     width: 82%;
     height: 82%;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #tutorial-image {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+}
+
+#tutorial-image-vertical {
+    display: none;
 }
 
 #main-game {
@@ -962,6 +970,22 @@ main {
         font-size: 16px;
     }   
 
+    #title-howtoplay {
+        font-size: 5.5rem;
+        margin: 5rem 0rem 0rem 0rem;
+    }
+
+    #tutorial-image-vertical {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+    
+    #tutorial-image {
+        display: none;
+    }
+    
     #titlemath p {
         letter-spacing: 0.8rem;
     }
