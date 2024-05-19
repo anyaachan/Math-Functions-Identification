@@ -168,7 +168,7 @@ main {
 }
 
 .back-arrow:hover {
-    scale: 1.1;
+    scale: 1.2;
 }
 
 #play-button {
@@ -288,7 +288,7 @@ main {
     display: grid;
     height: 100%;
     width: 100%;
-    margin: 0;
+    margin: 0 1rem;
 }
 
 .eternal-icon {
@@ -698,8 +698,8 @@ main {
 
 #arcade-lives img {
     margin: auto;
-    height: 100%;
-    width: 100%;
+    height: 5rem;
+    width: 5rem;
     display: flex;
 }
 
@@ -867,30 +867,93 @@ main {
     html {
         font-size: 20px;
     }
+
+    #arcade-lives img {
+        margin: auto;
+        height: 10rem;
+        width: 10rem;
+        display: flex;
+    }
     /* .gamemode-wrapper {
         margin: 0 2rem;
     } */
 }
 
-@media (max-width: 3000px) and (min-width: 2000px) {
+@media (max-width: 3000px) and (min-width: 1800px) {
     html {
         font-size: 16px;
     }
-}
 
-@media (max-width: 1500px) and (min-width: 1000px) {
-    html {
-        font-size: 10px;
+    #arcade-lives img {
+        height: 7rem;
+        width: 7rem;
     }
 }
 
-@media (max-width: 1100px) and (orientation: landscape) {
+@media (max-width: 1800px) and (min-width: 1500px) {
+    html {
+        font-size: 16px;
+    }
+
+    #arcade-time {
+        font-size: 4rem;
+    }
+
+
+    #arcade-lives img {
+        height: 5rem;
+        width: 5rem;
+    }
+}
+
+@media (max-width: 1500px) and (min-width: 1100px) {
+    html {
+        font-size: 10px;
+    }
+
+    #arcade-lives img {
+        height: 6rem;
+        width: 6rem;
+    }
+
+    #arcade-time {
+        font-size: 3.5rem;
+    }
+
+}
+
+@media (max-width: 1000px) and (orientation: landscape) {
     html {
         font-size: 8px;
     }
 
     .card-space-result {
         height: 70%;
+    }
+
+    #blob1 {
+        height: 35%;
+    }
+
+    #blob2 {
+        height: 45%;
+    }
+
+    #blob3 {
+        height: 55%;
+    }
+
+    #blob4 {
+        height: 65%;
+    }
+
+    #svg-container {
+        display: none;
+    }
+
+
+    #arcade-time {
+        font-size: 3.5rem;
     }
 }
 
@@ -992,13 +1055,14 @@ main {
 
 }
 
-@media (max-width: 900px) {
+@media (max-width: 850px) {
     html {
         font-size: 6px;
     }
-}
 
-@media (min-aspect-ratio: 65/100) and (orientation: portrait){
+}   
+
+@media (min-aspect-ratio: 60/100) and (orientation: portrait){
     html {
         font-size: 10px;
     }
@@ -1067,8 +1131,6 @@ main {
         height: 35%;
     }
 
-
-
     #main-gamemode {
         position: relative;
         display: flex;
@@ -1088,5 +1150,28 @@ main {
 
     .eternal-icon, .arcade-icon, .mentor-icon {
         display: none;
+    }
+}
+
+
+@media (min-aspect-ratio: 100/100) and (max-aspect-ratio: 120/100) {
+    html {
+        font-size: 8px;
+    }
+
+    .card-space {
+        height: 70%;
+    }
+
+    .gamemode-description > p {
+        font-size: 4rem;
+    }
+    
+    #titlemath {
+        font-size: 12rem;
+    }    
+
+    #footerheader > * > * {
+        font-size: 3rem;
     }
 }
