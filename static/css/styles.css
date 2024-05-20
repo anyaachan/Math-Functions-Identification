@@ -504,7 +504,7 @@ main {
     height: 70%;
     display: grid;
     grid-template-columns: auto 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 2fr 1fr;
     gap: 2rem;
     flex-direction: row;
     margin-left: 2rem;
@@ -512,6 +512,7 @@ main {
     grid-template-areas:
         "graph . ."
         "graph title title"
+        "graph wolfram wolfram"
         "graph button button"
         "graph . .";
 }
@@ -681,6 +682,21 @@ main {
     font-size: 2.5rem;
     text-decoration: underline;
     transition: 0.2s;
+    grid-area: wolfram;
+    margin: auto;
+}
+
+#wolfram-result {
+    color: #B70000;
+    font-size: 4rem;
+    text-decoration: underline;
+    transition: 0.2s;
+    grid-area: wolfram;
+    margin: auto;
+}
+
+#wolfram-result:hover {
+    scale: 1.05;
 }
 
 #wolfram:hover {
@@ -831,9 +847,6 @@ main {
     grid-area: info;
 }
 
-.resources {
-    display: none;
-}
 
 #canvas-result {
     width: 100%;
@@ -920,17 +933,17 @@ main {
     }
 
     #arcade-lives img {
-        height: 6rem;
-        width: 6rem;
+        height: 8rem;
+        width: 8rem;
     }
 
     #arcade-time {
-        font-size: 3.5rem;
+        font-size: 6rem;
     }
 
 }
 
-@media (max-width: 1000px) and (orientation: landscape) {
+@media (max-width: 1100px) and (orientation: landscape) {
     html {
         font-size: 8px;
     }
@@ -1029,7 +1042,7 @@ main {
         grid-template-areas:
             "title title"
             "graph graph"
-            ". ."
+            "wolfram wolfram"
             "button button";
     }    
 

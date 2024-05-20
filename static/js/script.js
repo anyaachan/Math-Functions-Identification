@@ -1,4 +1,4 @@
-let duration = 10;
+let duration = 20;
 let heartsCount = 3;
 let score = 0;
 
@@ -87,6 +87,7 @@ function resultOn(result) {
 
         if (window.location.pathname == "/eternal") {
             nCorrectAnsw += 1;
+            document.getElementById("wolfram-result").style.display = "block";
             displayAnswerRatio();
         }
     }
@@ -177,10 +178,15 @@ function checkEquation(userJson, functions, equation) {
     return result;
 }
 
-function getWolframLink(equation) {
+function getWolframLink(equation, isEternal) {
     let wolframUrl = "https://www.wolframalpha.com/input/?i=" + encodeURIComponent(equation);
-    let wolframDiv = document.getElementById("wolfram");
-    wolframDiv.href = wolframUrl;
+    if (isEternal) {
+        let wolframResultDiv = document.getElementById("wolfram-result");
+        wolframResultDiv.href = wolframUrl;
+    } else {
+        let wolframDiv = document.getElementById("wolfram");
+        wolframDiv.href = wolframUrl;
+    }
 }
 
 function startTimer(duration) {
@@ -246,11 +252,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     if (window.location.pathname == "/eternal") {
         displayAnswerRatio();
+        getWolframLink(randomEquation, true);
         startStopwatch(stopwatch);
     }
 
     if (window, location.pathname == "/mentor") {
-        getWolframLink(randomEquation);
+        getWolframLink(randomEquation, false);
     }
 
     // Reference to the canvas and div element
@@ -389,12 +396,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
             .then(response => response.json()) // Recieve raw responce from the server, also returns a promise
             .then(data => {  // Process the response data, eg showing the result to the user
                 console.log('Success:', data);
-                resultOn(checkEquation(data, functions, randomEquation));
+                checkEquationResults = checkEquation(data, functions, randomEquation);
+                resultOn(checkEquationResults);
 
                 encoded_answer = data.correct_function
                 document.getElementById("image-answer").src = encoded_answer;
 
-                if (checkEquation(data, functions, randomEquation)) {
+                if (checkEquationResults) {
                     document.getElementById("image-user-drawing").src = canvasURLGreen;
                 }
                 else {
