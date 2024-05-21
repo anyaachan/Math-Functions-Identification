@@ -133,7 +133,9 @@ let functions = {
     "negative_exponential": "-e^x",
     "logarithmic": "log(x)",
     "square_negative_root": "sqrt(-x)",
-    "absolute_linear": "|x|"
+    "absolute_linear": "|x|",
+    "cubic_root": "cbrt(x)",
+    "negative_cubic_root": "-cbrt(x)"
 }
 
 let functionsToLatex = {
@@ -149,7 +151,9 @@ let functionsToLatex = {
     "e^x": "e^x",
     "-e^x": "-e^x",
     "log(x)": "\log_{e}(x)",
-    "|x|": "|x|"
+    "|x|": "|x|",
+    "cbrt(x)": "\\sqrt[3]{x}",
+    "-cbrt(x)":"-\\sqrt[3]{x}"
 }
 
 function getKeyByValue(object, value) {
@@ -247,6 +251,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let randomEquation = getRandomEquation();
 
     if (window.location.pathname == "/arcade") {
+        getWolframLink(randomEquation, true);
         startTimer(duration);
     }
 
