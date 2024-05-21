@@ -762,6 +762,10 @@ main {
     text-align: center;
     letter-spacing: 0.2rem;
 
+    font-family: 'Rubik';
+    font-weight: 1000;
+    letter-spacing: 1.2rem;
+
     background: linear-gradient(90deg, #B1C901 0%, #FFA501 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -886,7 +890,7 @@ main {
 
 @media (max-width: 4000px) and (min-width: 3000px) {
     html {
-        font-size: 20px;
+        font-size: 30px;
     }
 
     #arcade-lives img {
@@ -895,25 +899,46 @@ main {
         width: 10rem;
         display: flex;
     }
-    /* .gamemode-wrapper {
-        margin: 0 2rem;
-    } */
+    
+    #play-button {
+        transform: scale(2);
+        transition: 0.2s;
+    }
+
+    #maintitle {
+        gap: 8rem;
+    }
 }
 
-@media (max-width: 3000px) and (min-width: 1800px) {
+@media (min-width: 1800px) and (max-width: 3000px) {
     html {
-        font-size: 16px;
+        font-size: 20px;
     }
 
     #arcade-lives img {
         height: 7rem;
         width: 7rem;
     }
+    #blob1 {
+        height: 32%;
+    }
+
+    #blob2 {
+        height:40%;
+    }
+
+    #blob3 {
+        height: 52%;
+    }
+
+    #blob4 {
+        height: 55%;
+    }
 }
 
 @media (max-width: 1800px) and (min-width: 1500px) {
     html {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     #arcade-time {
@@ -1099,14 +1124,23 @@ main {
 
 }   
 
-@media (min-aspect-ratio: 60/100) and (orientation: portrait){
+@media (min-aspect-ratio: 60/100) and (orientation: portrait) and (max-width: 3000px) {
     html {
         font-size: 10px;
     }
 
     #titlemath {
-        font-size: 10rem;
+        font-size: 8rem;
     }    
+
+    #play-button {
+        transform: scale(0.8);
+        transition: 0.2s;
+    }
+
+    #maintitle {
+        gap: 3rem;
+    }
 
     #footerheader > * > * {
         font-size: 2.3rem;
@@ -1165,6 +1199,10 @@ main {
     }
 
     #blob3 {
+        height: 35%;
+    }
+
+    #blob4 {
         height: 35%;
     }
 
