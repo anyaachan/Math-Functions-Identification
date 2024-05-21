@@ -888,7 +888,7 @@ main {
     height: 100%;
 }
 
-@media (max-width: 4000px) and (min-width: 3000px) {
+@media (min-width: 3000px) {
     html {
         font-size: 30px;
     }
@@ -907,6 +907,29 @@ main {
 
     #maintitle {
         gap: 8rem;
+    }
+
+    .svg-drawing {
+        max-width: 100%;
+        /* Ensures it scales down with the container */
+        max-height: 100%;
+        transform: scale(2) translate(-4rem, 0rem);
+    }
+
+    #blob1 {
+        height: 32%;
+    }
+
+    #blob2 {
+        height:40%;
+    }
+
+    #blob3 {
+        height: 52%;
+    }
+
+    #blob4 {
+        height: 55%;
     }
 }
 
