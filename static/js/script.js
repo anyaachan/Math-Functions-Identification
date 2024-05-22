@@ -120,6 +120,10 @@ function toMenu() {
     window.location.href = "/";
 }
 
+function toSelection() {
+    window.location.href = "/gamemode";
+}
+
 let functions = {
     "linear": "x",
     "negative_linear": "-x",

@@ -9,10 +9,11 @@
 </head>
 
 <body id = "body-gamemode">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     {% include 'background.html' %}
 
     <div class="back-arrow">
-        <img src="static/media/back-arrow.svg" alt="Back Arrow" onclick="window.history.back()">
+        <img src="static/media/back-arrow.svg" alt="Back Arrow" onclick="toMenu()">
     </div>
 
     <header id="header"></header>
