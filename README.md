@@ -22,7 +22,10 @@ The effectiveness of SketchMath's AI model relies on a dataset comprising:
 ### Title Screen
 <img width="1438" alt="image" src="https://github.com/anyaachan/Math-Functions-Identification/assets/53533713/ac741086-fcb8-4d0c-8606-6ab0989e5468">
 
+### Gameplay Tutorial 
+<img width="1440" alt="image" src="https://github.com/anyaachan/Math-Functions-Identification/assets/53533713/7e7b791d-cd47-4929-922f-5f5a01083ac2">
+
+
 ### Gameplay (Arcade)
 <img width="1440" alt="image" src="https://github.com/anyaachan/Math-Functions-Identification/assets/53533713/ba701a60-49b2-4631-bf59-4b2ace051d3f">
 
-### 
