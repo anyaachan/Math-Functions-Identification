@@ -8,6 +8,9 @@ var intervalID;
 let nCorrectAnsw = 0;
 let nIncorrectAnsw = 0;
 
+const HEART_FILLED_SRC = "static/media/heart-filled.svg";
+const HEART_EMPTY_SRC = "static/media/heart-empty.svg";
+
 function pauseOn() {
     document.getElementById('pause-screen').style.display = 'block';
 }
@@ -19,7 +22,9 @@ function pauseOff() {
 
 function continueTimer() {
     if (window.location.pathname == "/eternal") {
-        let currentTime = (document.getElementById("eternal-time").textContent).slice(-2);
+        let currentSeconds = (document.getElementById("eternal-time").textContent).slice(-2);
+        let currentMinutes = (document.getElementById("eternal-time").textContent).slice(0, 2);
+        let currentTime = parseInt(currentMinutes) * 60 + parseInt(currentSeconds);
         startStopwatch(currentTime);
     }
     if (window.location.pathname == "/arcade") {
@@ -40,27 +45,13 @@ function gameOver() {
 }
 
 function heartsDisplay(heartsCount) {
-    switch (heartsCount) {
-        case 1:
-            document.getElementById('life1').src = "static/media/heart-filled.svg";
-            document.getElementById('life2').src = "static/media/heart-empty.svg";
-            document.getElementById('life3').src = "static/media/heart-empty.svg";
-            break;
-        case 2:
-            document.getElementById('life1').src = "static/media/heart-filled.svg";
-            document.getElementById('life2').src = "static/media/heart-filled.svg";
-            document.getElementById('life3').src = "static/media/heart-empty.svg";
-            break;
-        case 3:
-            document.getElementById('life1').src = "static/media/heart-filled.svg";
-            document.getElementById('life2').src = "static/media/heart-filled.svg";
-            document.getElementById('life3').src = "static/media/heart-filled.svg";
-            break;
-        case 0:
-            document.getElementById('life1').src = "static/media/heart-filled.svg";
-            document.getElementById('life2').src = "static/media/heart-filled.svg";
-            document.getElementById('life3').src = "static/media/heart-filled.svg";
-            gameOver();
+    for (let i = 1; i <= 3; i++) {
+        // Loop throught the heart elements (life1, life2...)
+        // Check if i is less than or equal to the current number of hearts
+        document.getElementById(`life${i}`).src = i <= heartsCount ? HEART_FILLED_SRC : HEART_EMPTY_SRC;
+    }
+    if (heartsCount === 0) {
+        gameOver();
     }
 }
 
@@ -90,6 +81,9 @@ function resultOn(result) {
             document.getElementById("wolfram-result").style.display = "block";
             displayAnswerRatio();
         }
+        if (window.location.pathname == "/mentor") {
+            document.getElementById("wolfram").style.display = "block";
+        }
     }
     else {
         document.getElementById('incorrect').style.display = 'block';
@@ -103,7 +97,11 @@ function resultOn(result) {
 
         if (window.location.pathname == "/eternal") {
             nIncorrectAnsw += 1;
+            document.getElementById("wolfram-result").style.display = "block";
             displayAnswerRatio();
+        }
+        if (window.location.pathname == "/mentor") {
+            document.getElementById("wolfram-result").style.display = "block";
         }
     }
 
@@ -157,7 +155,7 @@ let functionsToLatex = {
     "log(x)": "\log_{e}(x)",
     "|x|": "|x|",
     "cbrt(x)": "\\sqrt[3]{x}",
-    "-cbrt(x)":"-\\sqrt[3]{x}"
+    "-cbrt(x)": "-\\sqrt[3]{x}"
 }
 
 function getKeyByValue(object, value) {
@@ -210,7 +208,7 @@ function startTimer(duration) {
         } else {
             document.getElementById("arcade-time").textContent = "00:" + seconds;
         }
-        
+
 
         timer = timer - 1;
         if (timer < 0) {
@@ -265,8 +263,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         startStopwatch(stopwatch);
     }
 
-    if (window, location.pathname == "/mentor") {
+    if (window.location.pathname == "/mentor") {
         getWolframLink(randomEquation, false);
+        getWolframLink(randomEquation, true);
     }
 
     // Reference to the canvas and div element
@@ -322,7 +321,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     ctx.lineCap = 'round';
 
     // Initiate drawing when mouse (or touch) is pressed
-    canvas.onmousedown = canvas.ontouchstart = function(e) {
+    canvas.onmousedown = canvas.ontouchstart = function (e) {
         e.preventDefault();  // Prevent scrolling 
         drawing = true;
         ctx.strokeStyle = '#B70000';
@@ -339,7 +338,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     // Draw on canvas as the mouse is moved
-    canvas.onmousemove = canvas.ontouchmove = function(e) {
+    canvas.onmousemove = canvas.ontouchmove = function (e) {
         e.preventDefault();
 
         // If the mouse is pressed, draw

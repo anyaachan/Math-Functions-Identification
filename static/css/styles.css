@@ -694,6 +694,7 @@ main {
 }
 
 #wolfram-result {
+    display: none;
     color: #B70000;
     font-size: 4rem;
     text-decoration: underline;
