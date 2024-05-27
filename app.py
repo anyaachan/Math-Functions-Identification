@@ -1,17 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 
 import tensorflow as tf
-import os, warnings
-
-from tensorflow.keras import layers
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.preprocessing import image_dataset_from_directory
-from tensorflow.keras.preprocessing.image import load_img, img_to_array
-
-
 from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing import image
-
 import tensorflow_hub as hub
 
 import numpy as np
@@ -24,12 +14,32 @@ app = Flask(__name__)
 SIZE = 224, 224
 AUTOTUNE = tf.data.AUTOTUNE
 ANSWERS_ROUTE = "pre_generated_functions"
+CLASS_NAMES = ['absolute_linear', 'cubic', 'cubic_root', 'exponential', 'linear', 'logarithmic', 'negative_cubic', 'negative_cubic_root', 'negative_exponential', 'negative_linear', 'negative_quadratic', 'negative_square_root', 'not_valid', 'quadratic', 'square_negative_root', 'square_root']
+MODEL_PATH = 'model/model.keras'
 
-class_names = ['absolute_linear', 'cubic', 'cubic_root', 'exponential', 'linear', 'logarithmic', 'negative_cubic', 'negative_cubic_root', 'negative_exponential', 'negative_linear', 'negative_quadratic', 'negative_square_root', 'not_valid', 'quadratic', 'square_negative_root', 'square_root']
+model = load_model(MODEL_PATH, custom_objects={'KerasLayer': hub.KerasLayer})
 
-model_path = 'model/model.keras'
-model = load_model(model_path, custom_objects={'KerasLayer': hub.KerasLayer})
+def decode_image(image_data):
+    header, encoded = image_data.split(",", 1)
+    bytes_data = base64.b64decode(encoded)
+    return Image.open(io.BytesIO(bytes_data))
 
+def prepare_image_for_model(image):
+    white_background_image = Image.new("RGBA", image.size, "WHITE") # Create a white RGBA background
+    white_background_image.paste(image, (0, 0), image) # Paste the image on a white background
+    final_img = white_background_image.convert("RGB")
+
+    final_img = final_img.resize(SIZE, Image.BILINEAR)
+    final_img = np.array(final_img)
+    final_img = np.expand_dims(final_img, axis=0)
+
+    return final_img
+
+def encode_image(image_path):
+    with open(image_path, "rb") as image_file:
+        encoded = base64.b64encode(image_file.read()).decode("utf-8")
+        return f"data:image/png;base64,{encoded}"
+    
 @app.route("/")
 def home():
     return render_template('main.html')
@@ -57,28 +67,15 @@ def eternal():
 @app.route("/upload-image", methods=['POST'])
 def upload_image():
     try:
-        image_data = request.json["image"]
         function_name = request.json["functionName"]
 
-        header, encoded = image_data.split(",", 1)
-        bytes_data = base64.b64decode(encoded)
+        image = decode_image(request.json["image"])
 
-        image = Image.open(io.BytesIO(bytes_data))
-        white_background_image = Image.new("RGBA", image.size, "WHITE")  # Create a white RGBA background
-        white_background_image.paste(image, (0, 0), image)  # Paste the image on a white background
-        final_img = white_background_image.convert("RGB")
-        final_img = final_img.resize(SIZE, Image.BILINEAR)
+        prediction = model.predict(prepare_image_for_model(image))
+        pred_class = CLASS_NAMES[np.argmax(prediction)]
 
-        final_img = np.array(final_img)
-        final_img = np.expand_dims(final_img, axis=0)
-        prediction = model.predict(final_img)
-        
-        pred_class = class_names[np.argmax(prediction)]
-
-        imagefile = open(ANSWERS_ROUTE + "/" + function_name + ".png", "rb")
-        answer_image_encoded = base64.b64encode(imagefile.read())
-        answer_image_encoded = answer_image_encoded.decode("utf-8")
-        answer_image_encoded = "data:image/png;base64," + answer_image_encoded
+        answer_image_path = f"{ANSWERS_ROUTE}/{function_name}.png"
+        answer_image_encoded = encode_image(answer_image_path)
 
         return jsonify(result=pred_class, correct_function=answer_image_encoded)
 
