@@ -202,9 +202,7 @@ main {
 
 .svg-drawing {
     max-width: 80%;
-    /* Ensures it scales down with the container */
     max-height: 80%;
-    /* Ensures it scales down with the container */
     transform: translate(-8rem, 0rem);
 }
 
@@ -592,7 +590,6 @@ main {
     top: -1rem;
 }
 
-/* Arrow for the X-axis */
 .x-axis::before {
     content: '';
     position: absolute;
@@ -604,7 +601,6 @@ main {
     border-left: 1.6rem solid black;
 }
 
-/* Label for the X-axis */
 .x-axis::after {
     font-family: "Handlee", cursive;
     font-weight: 400;
@@ -621,18 +617,8 @@ main {
     grid-area: title;
     text-align: center;
     display: flex;
-    /* overflow: hidden; */
-    /* justify-content: center; */
     align-items: center;
 }
-
-/* .elements {
-    margin: 0rem 2rem 0rem 1rem;
-    height: 100%;
-    display: grid;
-    grid-template-rows: 1fr 6fr;
-    /* flex-basis: 100%; */
-/* }  */
 
 #arcade-time-lives,
 #eternal-ratio-time {
@@ -919,7 +905,6 @@ main {
 
     .svg-drawing {
         max-width: 100%;
-        /* Ensures it scales down with the container */
         max-height: 100%;
         transform: scale(1.5) translate(-4rem, 0rem);
     }
